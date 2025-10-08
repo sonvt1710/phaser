@@ -203,7 +203,7 @@ var ColorMatrix = new Class({
     /**
      * Desaturates this ColorMatrix (removes color from it).
      *
-     * @method Phaser.Display.ColorMatrix#saturation
+     * @method Phaser.Display.ColorMatrix#desaturate
      * @since 3.50.0
      *
      * @param {boolean} [multiply=false] - Multiply the resulting ColorMatrix (`true`), or set it (`false`) ?
