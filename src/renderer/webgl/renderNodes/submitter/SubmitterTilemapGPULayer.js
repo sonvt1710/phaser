@@ -458,7 +458,7 @@ var SubmitterTilemapGPULayer = new Class({
         var height = tilemapLayer.height;
 
         calcMatrix.copyWithScrollFactorFrom(
-            camera.matrix,
+            camera.getViewMatrix(!drawingContext.useCanvas),
             camera.scrollX, camera.scrollY,
             tilemapLayer.scrollFactorX, tilemapLayer.scrollFactorY
         );
