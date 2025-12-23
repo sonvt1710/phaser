@@ -3,13 +3,18 @@
 ## New Features
 
 - `Texture#setWrap()` provides easy access to texture wrap mode in WebGL, which would otherwise be very technical to alter on `WebGLTextureWrapper` objects. This is probably of most use to shader authors. Thanks @Legend-Master for raising an issue where power-of-two sprites had unexpected wrapping artifacts.
-  - `Phaser.Textures.WrapMode.CLAMP_TO_EDGE` is always available.
-  - `Phaser.Textures.WrapMode.REPEAT` will only be applied to textures with width and height equal to powers of 2.
-  - `Phaser.Textures.WrapMode.MIRRORED_REPEAT` likewise requires powers of 2.
+- `Phaser.Textures.WrapMode.CLAMP_TO_EDGE` is always available.
+- `Phaser.Textures.WrapMode.REPEAT` will only be applied to textures with width and height equal to powers of 2.
+- `Phaser.Textures.WrapMode.MIRRORED_REPEAT` likewise requires powers of 2.
+- Added new optional `sortByY` parameter to the Tilemap `createFromObjects` method (thanks @saintflow47)
 
 ## Clarifications
 
 - Clarified that `Tilemap.createLayer()` with `gpu` flag enabled only works with orthographic layers, not hexagonal or isometric. Thanks @amirking59!
+
+## Updates
+
+- Gamepad buttons initialize as not being pressed, which created a problem when reading Gamepads in one Scene, and then reading them in another Scene. If the player held the button down for even a fraction of a second in the first scene, the second scene would see a bogus Button down event. The `Button` class now has a new optional `isPressed` boolean parameter which the `Gamepad` class uses to resolve this, initializing the current pressed state of the Button (thanks @cryonautlex)
 
 ## Fixes
 
