@@ -1104,11 +1104,11 @@ var ScaleManager = new Class({
             if (scaleX < scaleY)
             {
                 canvasWidth = baseWidth;
-                canvasHeight = (scaleX !== 0)? windowHeight / scaleX : baseHeight;
+                canvasHeight = (scaleX !== 0) ? windowHeight / scaleX : baseHeight;
             }
             else
             {
-                canvasWidth = (scaleY !== 0)? windowWidth / scaleY : baseWidth;
+                canvasWidth = (scaleY !== 0) ? windowWidth / scaleY : baseWidth;
                 canvasHeight = baseHeight;
             }
 

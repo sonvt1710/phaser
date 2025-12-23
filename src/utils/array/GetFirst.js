@@ -15,7 +15,7 @@ var SafeRange = require('./SafeRange');
  *
  * Optionally you can specify a start and end index. For example if the array had 100 elements,
  * and you set `startIndex` to 0 and `endIndex` to 50, it would search only the first 50 elements.
- * 
+ *
  * You can also specify a negative `startIndex`, such as `-1`, which would start the search at the end of the array
  *
  * @function Phaser.Utils.Array.GetFirst
@@ -34,14 +34,17 @@ var GetFirst = function (array, property, value, startIndex, endIndex)
     if (startIndex === undefined) { startIndex = 0; }
     if (endIndex === undefined) { endIndex = array.length; }
 
+    var i;
+    var child;
+
     if (startIndex !== -1)
     {
         if (SafeRange(array, startIndex, endIndex))
         {
-            for (var i = startIndex; i < endIndex; i++)
+            for (i = startIndex; i < endIndex; i++)
             {
-                var child = array[i];
-        
+                child = array[i];
+
                 if (!property ||
                     (property && value === undefined && child.hasOwnProperty(property)) ||
                     (property && value !== undefined && child[property] === value))
@@ -52,13 +55,12 @@ var GetFirst = function (array, property, value, startIndex, endIndex)
         }
     }
     else
-    {
         if (SafeRange(array, 0, endIndex))
         {
-            for (var i = endIndex; i >= 0; i--)
+            for (i = endIndex; i >= 0; i--)
             {
-                var child = array[i];
-        
+                child = array[i];
+
                 if (!property ||
                     (property && value === undefined && child.hasOwnProperty(property)) ||
                     (property && value !== undefined && child[property] === value))
@@ -67,8 +69,7 @@ var GetFirst = function (array, property, value, startIndex, endIndex)
                 }
             }
         }
-    }
-        
+
     return null;
 };
 

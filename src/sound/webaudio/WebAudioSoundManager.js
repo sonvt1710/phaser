@@ -111,7 +111,8 @@ var WebAudioSoundManager = new Class({
         var context = this.context;
 
         //  setTimeout to avoid weird audio artifacts (thanks Apple)
-        window.setTimeout(function () {
+        window.setTimeout(function ()
+        {
 
             if (context)
             {
