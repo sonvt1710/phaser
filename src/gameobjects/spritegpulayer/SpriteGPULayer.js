@@ -225,7 +225,9 @@ var SpriteGPULayer = new Class({
          * Any animation can be set to `ease: 'Gravity'` to use this value.
          * Instead of `amplitude`, the animation takes
          * `velocity` (a number of pixels) and
-         * `gravityFactor` (0-1) parameters.
+         * `gravityFactor` (-1 to 1) parameters.
+         * Note that a `gravityFactor` of 0 is assumed to be a mistake,
+         * and will be converted to 1.
          *
          * @name Phaser.GameObjects.SpriteGPULayer#gravity
          * @type {number}
@@ -927,7 +929,7 @@ var SpriteGPULayer = new Class({
 
         f32[offset++] = member.tintFill ? 1 : 0;
 
-        f32[offset++] = member.creationTime || this.timeElapsed;
+        f32[offset++] = member.creationTime === undefined ? this.timeElapsed : member.creationTime;
 
         f32[offset++] = member.scrollFactorX === undefined ? 1 : member.scrollFactorX;
         f32[offset++] = member.scrollFactorY === undefined ? 1 : member.scrollFactorY;
@@ -1178,7 +1180,9 @@ var SpriteGPULayer = new Class({
      *
      * If the ease for an animation is 'Gravity', the amplitude is replaced
      * with a two-part value: the integer part is the `velocity`,
-     * and the fractional part is the `gravityFactor`.
+     * and the fractional part is the remapped `gravityFactor`.
+     * To get the true `gravityFactor`, use `gravityFactor * 2 - 1` to map from [0,1] to [-1,1].
+     * An output `gravityFactor` of 0 actually means 1.
      *
      * @method Phaser.GameObjects.SpriteGPULayer#getMemberData
      * @since 4.0.0
@@ -1448,6 +1452,9 @@ var SpriteGPULayer = new Class({
 
                 if (gravityFactor >= 1)
                 {
+                    // We encode the factor as a fraction, so we can't encode 1.
+                    // The shader decodes 0 as 1 if Gravity is used.
+                    // This means a value of 0 will be wrongly interpreted, but why set 0?
                     gravityFactor = 0;
                 }
                 else if (gravityFactor < -1)
