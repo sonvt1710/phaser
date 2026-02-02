@@ -36,9 +36,7 @@ var Vector3 = require('../math/Vector3');
  * // Given a dynamic texture `dyn` where the filter output is drawn,
  * // and a texture `spiderTex` with lighting enabled,
  * // we can inject the WebGL texture straight into the scene lighting as a normal map.
- * const dynTex = dyn.getWebGLTexture();
- * const dynSource = new Phaser.Textures.TextureSource(spiderTex, dynTex);
- * spiderTex.dataSource[0] = dynSource; // This is where the normal map is located.
+ * spiderTex.setDataSource(dyn.getWebGLTexture());
  * ```
  *
  * A NormalTools effect is added to a Camera via the FilterList component:
