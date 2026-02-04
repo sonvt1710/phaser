@@ -17,10 +17,11 @@ var RGBStringToColor = require('./RGBStringToColor');
  * @since 3.0.0
  *
  * @param {(string|number|Phaser.Types.Display.InputColorObject)} input - The source color value to convert.
+ * @param {Phaser.Display.Color} [color] - The color where the new color will be stored. If not defined, a new color object is returned.
  *
  * @return {Phaser.Display.Color} A Color object.
  */
-var ValueToColor = function (input)
+var ValueToColor = function (input, color)
 {
     var t = typeof input;
 
@@ -30,20 +31,20 @@ var ValueToColor = function (input)
 
             if (input.substr(0, 3).toLowerCase() === 'rgb')
             {
-                return RGBStringToColor(input);
+                return RGBStringToColor(input, color);
             }
             else
             {
-                return HexStringToColor(input);
+                return HexStringToColor(input, color);
             }
 
         case 'number':
 
-            return IntegerToColor(input);
+            return IntegerToColor(input, color);
 
         case 'object':
 
-            return ObjectToColor(input);
+            return ObjectToColor(input, color);
     }
 };
 

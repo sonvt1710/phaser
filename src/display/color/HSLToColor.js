@@ -16,11 +16,14 @@ var HueToComponent = require('./HueToComponent');
  * @param {number} h - The hue value in the range 0 to 1.
  * @param {number} s - The saturation value in the range 0 to 1.
  * @param {number} l - The lightness value in the range 0 to 1.
+ * @param {Phaser.Display.Color} [color] - The color where the new color will be stored. If not defined, a new color object is returned.
  *
  * @return {Phaser.Display.Color} A Color object created from the results of the h, s and l values.
  */
-var HSLToColor = function (h, s, l)
+var HSLToColor = function (h, s, l, color)
 {
+    if (!color) { color = new Color(); }
+
     // achromatic by default
     var r = l;
     var g = l;
@@ -35,8 +38,6 @@ var HSLToColor = function (h, s, l)
         g = HueToComponent(p, q, h);
         b = HueToComponent(p, q, h - 1 / 3);
     }
-
-    var color = new Color();
 
     return color.setGLTo(r, g, b, 1);
 };

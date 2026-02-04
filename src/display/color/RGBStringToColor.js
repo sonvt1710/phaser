@@ -8,19 +8,20 @@ var Color = require('./Color');
 
 /**
  * Converts a CSS 'web' string into a Phaser Color object.
- * 
+ *
  * The web string can be in the format `'rgb(r,g,b)'` or `'rgba(r,g,b,a)'` where r/g/b are in the range [0..255] and a is in the range [0..1].
  *
  * @function Phaser.Display.Color.RGBStringToColor
  * @since 3.0.0
  *
  * @param {string} rgb - The CSS format color string, using the `rgb` or `rgba` format.
+ * @param {Phaser.Display.Color} [color] - The color where the new color will be stored. If not defined, a new color object is returned.
  *
  * @return {Phaser.Display.Color} A Color object.
  */
-var RGBStringToColor = function (rgb)
+var RGBStringToColor = function (rgb, color)
 {
-    var color = new Color();
+    if (!color) { color = new Color(); }
 
     var result = (/^rgba?\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*(?:,\s*(\d+(?:\.\d+)?))?\s*\)$/).exec(rgb.toLowerCase());
 
