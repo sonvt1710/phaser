@@ -46,6 +46,7 @@ var FilterNormalTools = require('./filters/FilterNormalTools');
 var FilterPanoramaBlur = require('./filters/FilterPanoramaBlur');
 var FilterParallelFilters = require('./filters/FilterParallelFilters');
 var FilterPixelate = require('./filters/FilterPixelate');
+var FilterQuantize = require('./filters/FilterQuantize');
 var FilterSampler = require('./filters/FilterSampler');
 var FilterShadow = require('./filters/FilterShadow');
 var FilterThreshold = require('./filters/FilterThreshold');
@@ -188,6 +189,7 @@ var RenderNodeManager = new Class({
             FilterPanoramaBlur: FilterPanoramaBlur,
             FilterParallelFilters: FilterParallelFilters,
             FilterPixelate: FilterPixelate,
+            FilterQuantize: FilterQuantize,
             FilterSampler: FilterSampler,
             FilterShadow: FilterShadow,
             FilterThreshold: FilterThreshold,

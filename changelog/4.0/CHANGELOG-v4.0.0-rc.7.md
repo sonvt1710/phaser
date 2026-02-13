@@ -52,6 +52,7 @@
 - `ImageLight` filter for image-based lighting, a soft, highly realistic form of illumination.
 - `PanoramaBlur` filter for adjusting images for `ImageLight`.
 - `NormalTools` filter for manipulating normal maps.
+- `Quantize` filter for reducing colors and dithering.
 - `Vignette` filter returns from Phaser 3.
   - Now sets a configurable border color instead of erasing alpha.
   - Also supports limited blend modes.

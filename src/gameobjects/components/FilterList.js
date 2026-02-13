@@ -21,6 +21,7 @@ var Mask = require('../../filters/Mask');
 var NormalTools = require('../../filters/NormalTools');
 var PanoramaBlur = require('../../filters/PanoramaBlur');
 var Pixelate = require('../../filters/Pixelate');
+var Quantize = require('../../filters/Quantize');
 var Sampler = require('../../filters/Sampler');
 var Shadow = require('../../filters/Shadow');
 var Threshold = require('../../filters/Threshold');
@@ -679,6 +680,38 @@ var FilterList = new Class({
             this.camera,
             amount
         ));
+    },
+
+    /**
+     * Adds a Quantize effect.
+     *
+     * Quantization reduces the unique number of colors in an image,
+     * based on some limited number of steps per color channel.
+     * This is good for creating a retro or stylized effect.
+     *
+     * Basic quantization breaks each channel up into a number of `steps`.
+     * These steps are normally regular. You can bias them towards the top or bottom
+     * by changing that channel's `gamma` value.
+     * You can adjust the lowest step, thus all subsequent steps, with the `offset`.
+     *
+     * Quantization is done in either RGBA or HSVA space.
+     * The steps, gamma, and offset always apply in the same order,
+     * but depending on color mode, they are either applied to
+     * `[ red, green, blue, alpha ]` or `[ hue, saturation, value, alpha ]`.
+     *
+     * The output may optionally be dithered, to eliminate banding
+     * and create the illusion that there are many more colors in use.
+     *
+     * @method Phaser.GameObjects.Components.FilterList#addQuantize
+     * @since 4.0.0
+     *
+     * @param {Phaser.Types.Filters.QuantizeConfig} [config] - The configuration object for the GradientMap effect.
+     *
+     * @returns {this} The new Quantize filter controller.
+     */
+    addQuantize: function (config)
+    {
+        return this.add(new Quantize(this.camera, config));
     },
 
     /**

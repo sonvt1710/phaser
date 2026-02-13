@@ -18,6 +18,6 @@ module.exports = [
     '    float progress = modulatedSample.r + modulatedSample.g + modulatedSample.b + modulatedSample.a;',
     '    vec4 rampColor = getRampAt(progress);',
     '    rampColor.rgb *= rampColor.a;',
-    '    gl_FragColor = rampColor;',
+    '    gl_FragColor = rampColor * sample.a;',
     '}',
 ].join('\n');

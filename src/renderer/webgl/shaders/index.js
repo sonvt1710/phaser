@@ -35,6 +35,7 @@ module.exports = {
     FilterNormalToolsFrag: require('./FilterNormalTools-frag.js'),
     FilterPanoramaBlurFrag: require('./FilterPanoramaBlur-frag.js'),
     FilterPixelateFrag: require('./FilterPixelate-frag.js'),
+    FilterQuantizeFrag: require('./FilterQuantize-frag.js'),
     FilterShadowFrag: require('./FilterShadow-frag.js'),
     FilterThresholdFrag: require('./FilterThreshold-frag.js'),
     FilterVignetteFrag: require('./FilterVignette-frag.js'),

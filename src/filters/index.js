@@ -28,6 +28,7 @@ var Filters = {
     PanoramaBlur: require('./PanoramaBlur'),
     ParallelFilters: require('./ParallelFilters'),
     Pixelate: require('./Pixelate'),
+    Quantize: require('./Quantize'),
     Sampler: require('./Sampler'),
     Shadow: require('./Shadow'),
     Threshold: require('./Threshold'),
