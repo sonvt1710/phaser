@@ -38,6 +38,7 @@ var FilterColorMatrix = require('./filters/FilterColorMatrix');
 var FilterCombineColorMatrix = require('./filters/FilterCombineColorMatrix');
 var FilterDisplacement = require('./filters/FilterDisplacement');
 var FilterGlow = require('./filters/FilterGlow');
+var FilterGradientMap = require('./filters/FilterGradientMap');
 var FilterImageLight = require('./filters/FilterImageLight');
 var FilterKey = require('./filters/FilterKey');
 var FilterMask = require('./filters/FilterMask');
@@ -179,6 +180,7 @@ var RenderNodeManager = new Class({
             FilterCombineColorMatrix: FilterCombineColorMatrix,
             FilterDisplacement: FilterDisplacement,
             FilterGlow: FilterGlow,
+            FilterGradientMap: FilterGradientMap,
             FilterImageLight: FilterImageLight,
             FilterKey: FilterKey,
             FilterMask: FilterMask,

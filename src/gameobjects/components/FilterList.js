@@ -14,6 +14,7 @@ var ColorMatrix = require('../../filters/ColorMatrix');
 var CombineColorMatrix = require('../../filters/CombineColorMatrix');
 var Displacement = require('../../filters/Displacement');
 var Glow = require('../../filters/Glow');
+var GradientMap = require('../../filters/GradientMap');
 var ImageLight = require('../../filters/ImageLight');
 var Key = require('../../filters/Key');
 var Mask = require('../../filters/Mask');
@@ -445,6 +446,28 @@ var FilterList = new Class({
             quality,
             distance
         ));
+    },
+
+    /**
+     * Adds a GradientMap effect.
+     *
+     * GradientMap recolors an image using a ColorRamp.
+     * The image is converted to a progress value at each point,
+     * and that progress is evaluated as a color along the ramp.
+     *
+     * The progress value is normally the brightness of the image.
+     * You can use the `colorFactor` and `color` properties to customize it.
+     *
+     * @method Phaser.GameObjects.Components.FilterList#addGradientMap
+     * @since 4.0.0
+     *
+     * @param {Phaser.Types.Filters.GradientMapConfig} [config] - The configuration object for the GradientMap effect.
+     *
+     * @returns {Phaser.Filters.GradientMap}
+     */
+    addGradientMap: function (config)
+    {
+        return this.add(new GradientMap(this.camera, config));
     },
 
     /**

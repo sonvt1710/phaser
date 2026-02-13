@@ -28,6 +28,7 @@ module.exports = {
     FilterCombineColorMatrixFrag: require('./FilterCombineColorMatrix-frag.js'),
     FilterDisplacementFrag: require('./FilterDisplacement-frag.js'),
     FilterGlowFrag: require('./FilterGlow-frag.js'),
+    FilterGradientMapFrag: require('./FilterGradientMap-frag.js'),
     FilterImageLightFrag: require('./FilterImageLight-frag.js'),
     FilterKeyFrag: require('./FilterKey-frag.js'),
     FilterMaskFrag: require('./FilterMask-frag.js'),

@@ -20,6 +20,7 @@ var Filters = {
     CombineColorMatrix: require('./CombineColorMatrix'),
     Displacement: require('./Displacement'),
     Glow: require('./Glow'),
+    GradientMap: require('./GradientMap'),
     ImageLight: require('./ImageLight'),
     Key: require('./Key'),
     Mask: require('./Mask'),

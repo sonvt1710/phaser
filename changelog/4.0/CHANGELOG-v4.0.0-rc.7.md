@@ -47,6 +47,7 @@
   - FILL mode now treats partial alpha correctly.
   - BitmapText tinting now works correctly.
 - `CombineColorMatrix` filter for remixing alpha and other channels between images.
+- `GradientMap` filter for recoloring images using a gradient and their own brightness.
 - `Key` filter for removing or isolating colors.
 - `ImageLight` filter for image-based lighting, a soft, highly realistic form of illumination.
 - `PanoramaBlur` filter for adjusting images for `ImageLight`.
