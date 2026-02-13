@@ -97,7 +97,7 @@ module.exports = [
     '{',
     '    float dx = dFdx(value);',
     '    float dy = dFdy(value);',
-    '    float rateOfChange = sqrt(dx * dx + dy * dy) / sqrt(2.0);',
+    '    float rateOfChange = sqrt(dx * dx + dy * dy);',
     '    value += (mod(52.9829189 * mod(0.06711056 * gl_FragCoord.x + 0.00583715 * gl_FragCoord.y, 1.0), 1.0) - 0.5) * rateOfChange;',
     '    return value;',
     '}',
