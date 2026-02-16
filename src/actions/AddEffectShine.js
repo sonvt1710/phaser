@@ -95,7 +95,7 @@ var AddEffectShine = function (target, config)
     var gradientWidth = config.width || target.width || 128;
     var gradientHeight = config.height || target.height || 128;
     var start = { x: 0, y: 0 };
-    if (gradientDirection < 1) { gradientDirection += Math.PI * 2; }
+    if (gradientDirection < 0) { gradientDirection += Math.PI * 2; }
     if (gradientDirection > Math.PI * 3 / 2)
     {
         // Bottom-left start
