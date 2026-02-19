@@ -8,5 +8,5 @@
  * @property {number} [modelRotation=0] - The initial rotation of the model in radians.
  * @property {Phaser.GameObjects.GameObject | Phaser.Types.Filters.ImageLightSourceCallback | null} [modelRotationSource=null] - The source of the model rotation. If a function, it will be called to get the rotation. If a GameObject, it will be used to get the rotation from the GameObject's world transform. If null, the model rotation will be taken from the modelRotation property.
  * @property {number} [bulge=0] - The amount of bulge to apply to the ImageLight effect. This distorts the surface slightly, preventing flat areas in the normal map from reflecting a single flat color. A value of 0.1 is often plenty.
- * @property {[number, number, number]} [colorFactor=[1, 1, 1]] - The color factor to apply to the ImageLight effect. This multiplies the intensity of the light in each color channel. Use values above 1 to substitute for high dynamic range lighting.
+ * @property {number[]} [colorFactor=[1, 1, 1]] - The color factor to apply to the ImageLight effect. This multiplies the intensity of the light in each color channel. Use values above 1 to substitute for high dynamic range lighting.
  */
