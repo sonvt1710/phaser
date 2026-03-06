@@ -432,6 +432,89 @@ var NoiseSimplex3D = new Class({
     },
 
     /**
+     * Set the colors of the noise, from a variety of color formats.
+     *
+     * - A number is expected to be a 24 or 32 bit RGB or ARGB value.
+     * - A string is expected to be a hex code.
+     * - An array of numbers is expected to be RGB or RGBA in the range 0-1.
+     * - A Color object can be used.
+     *
+     * @method Phaser.GameObjects.NoiseSimplex3D#setNoiseColor
+     * @since 4.0.0
+     * @param {number | string | number[] | Color} [start=0x000000] - The color in the middle of the cells.
+     * @param {number | string | number[] | Color} [end=0xffffff] - The color at the edge of the cells.
+     * @returns {this} This game object.
+     */
+    setNoiseColor: function (start, end)
+    {
+        var alpha;
+
+        if (start === undefined)
+        {
+            start = 0x000000;
+        }
+        if (end === undefined)
+        {
+            end = 0xffffff;
+        }
+
+        if (typeof start === 'number')
+        {
+            Color.IntegerToColor(start, this.noiseColorStart);
+        }
+        else if (typeof start === 'string')
+        {
+            Color.HexStringToColor(start, this.noiseColorStart);
+        }
+        else if (Array.isArray(start))
+        {
+            alpha = (start[3] === undefined) ? 1 : start[3];
+            this.noiseColorStart.setGLTo(start[0], start[1], start[2], alpha);
+        }
+        else if (start instanceof Color)
+        {
+            this.noiseColorStart.setTo(start.red, start.green, start.blue, start.alpha);
+        }
+
+        if (typeof end === 'number')
+        {
+            Color.IntegerToColor(end, this.noiseColorEnd);
+        }
+        else if (typeof end === 'string')
+        {
+            Color.HexStringToColor(end, this.noiseColorEnd);
+        }
+        else if (Array.isArray(end))
+        {
+            alpha = (end[3] === undefined) ? 1 : end[3];
+            this.noiseColorEnd.setGLTo(end[0], end[1], end[2], alpha);
+        }
+        else if (end instanceof Color)
+        {
+            this.noiseColorEnd.setTo(end.red, end.green, end.blue, end.alpha);
+        }
+
+        return this;
+    },
+
+    /**
+     * Randomize the noise seed, creating a unique pattern.
+     *
+     * @method Phaser.GameObjects.NoiseSimplex3D#randomizeNoiseSeed
+     * @since 4.0.0
+     * @returns {this} This game object.
+     */
+    randomizeNoiseSeed: function ()
+    {
+        var len = this.noiseSeed.length;
+        for (var i = 0; i < len; i++)
+        {
+            this.noiseSeed[i] = Math.random();
+        }
+        return this;
+    },
+
+    /**
      * Set the noise texture to wrap seamlessly.
      *
      * This sets `noisePeriod` to equal `noiseCells` in all dimensions.
