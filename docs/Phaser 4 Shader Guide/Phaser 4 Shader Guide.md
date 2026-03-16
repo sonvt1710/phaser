@@ -5,6 +5,7 @@ Phaser 4 updates the WebGL rendering system to become more powerful and reliable
 1. Rendering Concepts
 2. Sample Shader GameObject, Step By Step
 3. Sample Filter, Step By Step
+4. Built In Shaders and Shader Additions
 
 ## 1. Rendering Concepts
 
@@ -576,5 +577,123 @@ This is a simple example. You can use all the more advanced features of Shaders 
 ```ts
 super(name, manager, fragmentShaderKey, fragmentShaderSource, shaderAdditions);
 ```
+
+## 4. Built In Shaders and Shader Additions
+
+All of the shaders and shader additions used in Phaser 4 have their code available through the library. Here we'll discuss how you can use them to your advantage, or as inspiration for further development.
+
+### Shader Additions Redux
+
+Phaser 4 uses a templating system called Additions to create variants of a shader.
+
+To support Additions, a shader must set template points. These are simply a line of the form `#pragma phaserTemplate(KEY)`. This defines the point where Additions add code associated with `KEY`. This is valid GLSL preprocessor code, so it works in code editors, and is replaced before the shader compiles.
+
+An Addition is a config object with the following properties:
+
+- `name`: A unique identifier.
+  - Example: `'ITERATIONS_1'`
+  - The name may have a numeric qualifier, to distinguish between variants of the Addition. Additions with the same name are assumed to be identical, even if the shader code has changed.
+- `tags`: Optional array of tags.
+  - Example: `'ITERATION'`
+  - These can help categorize Additions, but they also provide a way to access Additions if their name changes.
+- `disable`: Optional flag.
+  - Disable an Addition to temporarily remove its code from the shader. Its name is automatically removed from the shader while disabled.
+- `additions`: Object with key-value pairs describing template points and GLSL code.
+  - Example: `{ fragmentHeader: someCode }`
+  - The key is the key from a `phaserTemplate` pragma.
+  - The code is added to the shader. Several Additions can use the same key simultaneously. They are added in order of Addition.
+  - Keys are added to both vertex and fragment shaders.
+  - If the key doesn't exist, no code is added.
+  - Additions can define further `phaserTemplate` keys. Be cautious: these can only be found by Additions that come after them.
+
+### Structure of Extensible Shaders
+
+Many shaders in Phaser 4 have template points for Additions. Many are specialized, but a few are universal or intended for widespread use. The most common shaders to extend are likely for a Filter or a Shader game object, but we'll also look at the Multi shader which is used for common sprite operations.
+
+Template points will be identified by the `KEY` in `#pragma phaserTemplate(KEY)`.
+
+#### Universal Template Points
+
+- `shaderName`: The shader name will be defined here. This serves no purpose except in debug. Include it so you have it when you need it most.
+
+#### Shader Game Object Template Points
+
+The default fragment shader has a wide set of template points, so you can create your own modular shader code. You may choose to supply your own fragment shader, which won't have any points unless you add them.
+
+- `extensions`: Enable optional WebGL features. These must also be enabled in `game.renderer`.
+  - Extensions must be enabled before any other GLSL code.
+  - Phaser 4 enables several WebGL extensions automatically, but the only one relevant to shader code is `OES_standard_derivatives`. Enable this by adding the GLSL code `#extension GL_OES_standard_derivatives : enable`
+  - This key is shared with the vertex shader.
+- `features`: A place to define feature flags.
+  - E.g. `#define ENABLE_FOO` will activate other preprocessor statements such as `#ifdef ENABLE_FOO`.
+  - This key is shared with the vertex shader.
+  - Features can be managed by the ProgramManager.
+- `fragmentDefine`: A place to define constants.
+  - E.g. `#define ITERATIONS 1` lets you use `ITERATIONS` later in the code as a compile-time variable.
+  - This is typically how you handle variable loop length in shaders.
+- `outVariables`: A place to define `varying` variables received from the vertex shader.
+  - E.g. `varying vec2 outTexCoord;` is already set up to pass texture coordinates.
+  - This key is shared with the vertex shader. Varying declarations must match between vertex and fragment shader for a valid shader program.
+- `fragmentHeader`: A place to define other code for use in the fragment shader, e.g. uniforms and functions.
+  - This sits above the `main` function.
+  - Order is somewhat important: functions expect functions they call to be defined before them.
+- `fragmentProcess`: A place to define extra steps for fragment processing.
+  - This is within the `main` function, between the statements `vec4 fragColor = vec4(outTexCoord.xyx, 1.0);` and `gl_FragColor = fragColor;`.
+  - You can define steps to overwrite `fragColor`.
+
+You will typically not need to adjust the vertex shader for Shaders, but it has a number of template points just in case:
+
+- `extensions`
+- `features`
+- `vertexDefine`: Like `fragmentDefine` but in the vertex shader.
+- `outVariables`
+- `vertexHeader`: Like `fragmentHeader` buf in the vertex shader.
+- `vertexProcess`: Like `fragmentProcess` but in the vertex shader.
+  - This is within the `main` function, after `gl_Position` and `outTexCoord` have been set.
+  - You can define steps to overwrite the standard output, or update extra `varying` variables.
+
+#### Filter Template Points
+
+Filters typically define their own fragment shader. Where necessary, they may define template points, particularly `fragmentHeader` to include common functions. You may define your own, perhaps taking inspiration from the Shader system.
+
+Filters use `SimpleTexture-vert` for their vertex shader. This has no template points, because it's intended to be used by automatic systems and needs precise alignment. It supplies the varyings `vec2 outFragCoord` for normalized screen space coordinates, and `vec2 outTexCoord` for texture coordinates.
+
+#### Multi Shader Template Points
+
+The Multi shader defines the same set of addition points as Shader. It implements a large number of Additions. See the `BatchHandlerQuad` code for specifics.
+
+### Existing Shader Code
+
+All of Phaser's shaders are stored as strings in `Phaser.Renderer.WebGL.Shaders`. The strings are GLSL code. They are optimized for performance over readability, but should still make sense.
+
+Vertex shaders are stored with the `Vert` suffix, e.g. `MultiVert`. Most are functional without additions.
+
+Fragment shaders are stored with the `Frag` suffix, e.g. `MultiFrag`. Most are functional without additions, but some expect extra definitions before they become valid code.
+
+Shader code with neither a `Vert` nor `Frag` suffix is typically used in Additions. It doesn't form a valid shader program. It's intended to be injected into another shader.
+
+You can use this code yourself, e.g. as additions, as the base of your own shaders, or as text to manipulate as you will. We do reserve the possibility that the text of the shaders will change, as it is functional code.
+
+In most cases, you probably want to use addition makers instead of grabbing the raw code.
+
+### Shader Addition Makers
+
+Phaser 4 contains a set of Addition Makers, functions for returning Additions ready to include in a config object. These are available on `Phaser.Renderer.WebGL.ShaderAdditionMakers`.
+
+Addition Makers may take a set of parameters. The last parameter is always `disable`, which creates the addition disabled if set. This is useful for including an addition but not activating it at first.
+
+Many of these additions are quite specialized, but here are some interesting or useful ones.
+
+- `MakeDefineLights`, `MakeRotationDatum`, `MakeOutInverseRotation`, `MakeGetNormalFromMap` and `MakeApplyLighting` work together to use Phaser's dynamic lighting system. They are separate because you could use lights and normal maps outside this context.
+- `MakeFlatNormal` provides a flat normal vector without needing a normal map.
+- `MakeApplyTint` uses an `outTint` varying (provided by the Multi vertex shader) to apply various tint modes to a color.
+- `MakeBoundedSampler` provides a function to the fragment shader called `boundedSampler`. This returns a transparent pixel if the sample comes from outside the range 0-1 (the standard GL texture range). We use bounded samplers in filter shaders to prevent unwanted stretching or wrapping at texture frame edges.
+- `MakeSmoothPixelArt` supplies a function for sampling unfiltered textures with antialiasing, which keeps pixels blocky but eliminates jaggedness and motion popping. It calls this function from a template key point called `texCoord`.
+
+Most of these Addition Makers define small snippets of code that aren't stored in GLSL strings, as that would create too much clutter. These small snippets are important for hooking the additions together. It's worth reviewing the source code to see exactly what they're doing.
+
+Some Addition Makers configure the addition with some variable. You might want to update this variable at runtime using the `updateShaderConfig` method provided by Filter and Shader. You might also use the ProgramManager to add, replace, or remove additions and features entirely, using the Addition Makers to build your additions instead of rewriting them.
+
+## Further Steps
 
 There are many more intricate possibilities in Phaser 4, but the areas covered by this guide should be enough for most uses, and it shows you all the key areas. To learn more, try digging into the Phaser source code at https://github.com/phaserjs/phaser and see how we've used the principles explained here. We have not explained the systems used to set up GPU resources, including index buffers, VAOs, and attribute binding, as they are relevant only when designing vertex shaders with their own attribute schemes. Shaders and Filters use quads managed by the Phaser 4 renderer, which keeps everything simple.
