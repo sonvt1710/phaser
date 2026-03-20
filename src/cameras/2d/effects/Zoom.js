@@ -64,7 +64,7 @@ var Zoom = new Class({
         this.duration = 0;
 
         /**
-         * The starting zoom value;
+         * The starting zoom value.
          *
          * @name Phaser.Cameras.Scene2D.Effects.Zoom#source
          * @type {number}
