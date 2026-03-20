@@ -504,10 +504,10 @@ var NineSlice = new Class({
     },
 
     /**
-     * Updates all of the vertice UV coordinates. This is called automatically
+     * Updates all of the vertex UV coordinates. This is called automatically
      * when the NineSlice Game Object is created, or if the texture frame changes.
      *
-     * Unlike with the `updateVertice` method, you do not need to call this
+     * Unlike with the `updateVertex` method, you do not need to call this
      * method if the Nine Slice changes size. Only if it changes texture frame.
      *
      * @method Phaser.GameObjects.NineSlice#updateUVs
@@ -585,7 +585,7 @@ var NineSlice = new Class({
      * `tileX` and `tileY` properties, combined with the Game Object size.
      *
      * This method is called automatically when this object is created
-     * or if it's origin is changed.
+     * or if its origin is changed.
      *
      * You should not typically need to call this method directly, but it
      * is left public should you find a need to modify one of those properties
