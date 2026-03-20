@@ -252,7 +252,7 @@ var Gamepad = new Class({
          * A reference to the Horizontal Axis for the Left Stick.
          *
          * @name Phaser.Input.Gamepad.Gamepad#_HAxisLeft
-         * @type {Phaser.Input.Gamepad.Button}
+         * @type {Phaser.Input.Gamepad.Axis}
          * @private
          * @since 3.10.0
          */
@@ -262,7 +262,7 @@ var Gamepad = new Class({
          * A reference to the Vertical Axis for the Left Stick.
          *
          * @name Phaser.Input.Gamepad.Gamepad#_VAxisLeft
-         * @type {Phaser.Input.Gamepad.Button}
+         * @type {Phaser.Input.Gamepad.Axis}
          * @private
          * @since 3.10.0
          */
@@ -272,7 +272,7 @@ var Gamepad = new Class({
          * A reference to the Horizontal Axis for the Right Stick.
          *
          * @name Phaser.Input.Gamepad.Gamepad#_HAxisRight
-         * @type {Phaser.Input.Gamepad.Button}
+         * @type {Phaser.Input.Gamepad.Axis}
          * @private
          * @since 3.10.0
          */
@@ -282,7 +282,7 @@ var Gamepad = new Class({
          * A reference to the Vertical Axis for the Right Stick.
          *
          * @name Phaser.Input.Gamepad.Gamepad#_VAxisRight
-         * @type {Phaser.Input.Gamepad.Button}
+         * @type {Phaser.Input.Gamepad.Axis}
          * @private
          * @since 3.10.0
          */
