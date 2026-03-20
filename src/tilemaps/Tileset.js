@@ -155,7 +155,7 @@ var Tileset = new Class({
         this.glTexture = null;
 
         /**
-         * The number of tile rows in the the tileset.
+         * The number of tile rows in the tileset.
          *
          * @name Phaser.Tilemaps.Tileset#rows
          * @type {number}
