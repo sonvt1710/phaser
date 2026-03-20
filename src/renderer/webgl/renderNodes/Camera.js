@@ -66,7 +66,7 @@ var Camera = new Class({
 
         /**
          * A temporary TransformMatrix used for the parent context
-         * within which this camera is renderered.
+         * within which this camera is rendered.
          *
          * @name Phaser.Renderer.WebGL.RenderNodes.Camera#_parentTransformMatrix
          * @type {Phaser.GameObjects.Components.TransformMatrix}
