@@ -60,7 +60,7 @@ var Rectangle = new Class({
          * Do not modify this property. Instead, call the method `setRounded` to set the
          * radius of the rounded corners.
          *
-         * @name Phaser.GameObjects.Shape#radius
+         * @name Phaser.GameObjects.Rectangle#radius
          * @type {number}
          * @readonly
          * @since 3.89.0
@@ -73,7 +73,7 @@ var Rectangle = new Class({
          * Do not modify this property. Instead, call the method `setRounded` to set the
          * radius state of this rectangle.
          *
-         * @name Phaser.GameObjects.Shape#isRounded
+         * @name Phaser.GameObjects.Rectangle#isRounded
          * @type {boolean}
          * @readonly
          * @since 3.89.0
