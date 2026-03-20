@@ -78,7 +78,7 @@ var CombineColorMatrix = new Class({
          * By default, RGB values are added together in the final output.
          *
          * @name Phaser.Filters.CombineColorMatrix#additions
-         * @type {Phaser.Display.ColorMatrix}
+         * @type {number[]}
          * @since 4.0.0
          * @default [ 1, 1, 1, 0 ]
          */
@@ -92,8 +92,8 @@ var CombineColorMatrix = new Class({
          *
          * By default, alpha values are multiplied together in the final output.
          *
-         * @name Phaser.Filters.CombineColorMatrix#additions
-         * @type {Phaser.Display.ColorMatrix}
+         * @name Phaser.Filters.CombineColorMatrix#multiplications
+         * @type {number[]}
          * @since 4.0.0
          * @default [ 0, 0, 0, 1 ]
          */
