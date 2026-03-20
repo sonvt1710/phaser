@@ -93,7 +93,7 @@ var BaseSoundManager = new Class({
         this.volume = 1;
 
         /**
-         * Flag indicating if sounds should be paused when game looses focus,
+         * Flag indicating if sounds should be paused when game loses focus,
          * for instance when user switches to another tab/program/app.
          *
          * @name Phaser.Sound.BaseSoundManager#pauseOnBlur
