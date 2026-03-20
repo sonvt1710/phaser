@@ -491,9 +491,9 @@ var Camera = new Class({
      *
      * @param {number} zoom - The target Camera zoom value.
      * @param {number} [duration=1000] - The duration of the effect in milliseconds.
-     * @param {(string|function)} [ease='Linear'] - The ease to use for the pan. Can be any of the Phaser Easing constants or a custom function.
-     * @param {boolean} [force=false] - Force the pan effect to start immediately, even if already running.
-     * @param {Phaser.Types.Cameras.Scene2D.CameraPanCallback} [callback] - This callback will be invoked every frame for the duration of the effect.
+     * @param {(string|function)} [ease='Linear'] - The ease to use for the zoom. Can be any of the Phaser Easing constants or a custom function.
+     * @param {boolean} [force=false] - Force the zoom effect to start immediately, even if already running.
+     * @param {Phaser.Types.Cameras.Scene2D.CameraZoomCallback} [callback] - This callback will be invoked every frame for the duration of the effect.
      * It is sent four arguments: A reference to the camera, a progress amount between 0 and 1 indicating how complete the effect is,
      * the current camera scroll x coordinate and the current camera scroll y coordinate.
      * @param {any} [context] - The context in which the callback is invoked. Defaults to the Scene to which the Camera belongs.
@@ -619,7 +619,7 @@ var Camera = new Class({
         else
         {
             // Regular camera
-            // Apply view transforms in order IRST.
+            // Apply view transforms in order ITRS.
             matrix.applyITRS(originX, originY, this.rotation, zoomX, zoomY);
             matrix.translate(-sx - originX, -sy - originY);
         }
