@@ -125,7 +125,7 @@ var KeyboardManager = new Class({
          *
          * @name Phaser.Input.Keyboard.KeyboardManager#onKeyDown
          * @type {function}
-         * @since 3.16.00
+         * @since 3.16.0
          */
         this.onKeyDown = NOOP;
 
@@ -136,7 +136,7 @@ var KeyboardManager = new Class({
          *
          * @name Phaser.Input.Keyboard.KeyboardManager#onKeyUp
          * @type {function}
-         * @since 3.16.00
+         * @since 3.16.0
          */
         this.onKeyUp = NOOP;
 
