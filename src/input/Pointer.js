@@ -1198,7 +1198,7 @@ var Pointer = new Class({
     },
 
     /**
-     * Fully reset this Pointer back to its unitialized state.
+     * Fully reset this Pointer back to its uninitialized state.
      *
      * @method Phaser.Input.Pointer#reset
      * @since 3.60.0
