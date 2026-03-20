@@ -94,7 +94,7 @@ var Glow = new Class({
          * If `true` only the glow is drawn, not the texture itself.
          *
          * @name Phaser.Filters.Glow#knockout
-         * @type {number}
+         * @type {boolean}
          * @since 4.0.0
          * @default false
          */
