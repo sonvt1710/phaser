@@ -11,7 +11,7 @@ var GameObject = require('../gameobjects/GameObject');
 var UUID = require('../utils/string/UUID');
 
 /**
- * Adds a Shine effect to a Camera or GameObject.
+ * Adds a Shine effect to a Camera or GameObject or list thereof.
  *
  * Shine simulates a highlight glancing from a surface.
  * It's a brief specular reflection of a bright light,
@@ -56,6 +56,10 @@ var UUID = require('../utils/string/UUID');
  * Unless you use them in other systems, they are isolated and safe to destroy.
  * (The Tween requires the other resources to exist while it exists.)
  *
+ * When you target multiple objects with this method,
+ * each creates its own set of resources. Each set is independent,
+ * and may be destroyed or manipulated without affecting the others.
+ *
  * You can create your own Shine effects using this as a base or as inspiration.
  *
  * @example
@@ -69,31 +73,29 @@ var UUID = require('../utils/string/UUID');
  *     colorFactor: [ 0.5,2,2,1 ],
  *     yoyo: true,
  *     ease: 'Quad.inout'
- * });
+ * })[0]; // The return is an array.
  *
  * @function Phaser.Actions.AddEffectShine
  * @since 4.0.0
  *
- * @param {Phaser.Cameras.Scene2D.Camera|Phaser.GameObjects.GameObject} target - Recipient of the Shine effect
+ * @param {Phaser.Cameras.Scene2D.Camera|Phaser.GameObjects.GameObject|Array.<(Phaser.Cameras.Scene2D.Camera|Phaser.GameObjects.GameObject)>} items - Recipients of the Shine effect
  * @param {Phaser.Types.Actions.AddEffectShineConfig} [config] - Initial configuration of the Shine effect.
  *
- * @return {Phaser.Types.Actions.AddEffectShineReturn} An object containing the resources which were created.
+ * @return {Phaser.Types.Actions.AddEffectShineReturn[]} A list of objects containing the resources which were created.
  */
-var AddEffectShine = function (target, config)
+var AddEffectShine = function (items, config)
 {
     if (!config) { config = {}; }
 
-    // Enable filters on target.
-    if (target instanceof GameObject)
-    {
-        target.enableFilters();
-    }
+    if (!Array.isArray(items)) { items = [ items ]; }
+    var firstItem = items[0];
+    var scene = firstItem.scene;
 
     var gradientDirection = config.direction === undefined ? 0.5 : config.direction % (Math.PI * 2);
     var gradientScale = config.scale === undefined ? 2 : config.scale;
     var gradientRadius = (config.radius || 0.5) / gradientScale;
-    var gradientWidth = config.width || target.width || 128;
-    var gradientHeight = config.height || target.height || 128;
+    var gradientWidth = config.width || firstItem.width || 128;
+    var gradientHeight = config.height || firstItem.height || 128;
     var start = { x: 0, y: 0 };
     if (gradientDirection < 0) { gradientDirection += Math.PI * 2; }
     if (gradientDirection > Math.PI * 3 / 2)
@@ -113,107 +115,123 @@ var AddEffectShine = function (target, config)
         start.x = 1;
     }
 
-    // Create Gradient object.
-    var gradientConfig = {
-        origin: 0,
-        width: gradientWidth,
-        height: gradientHeight,
-        config: {
-            offset: -gradientRadius,
-            repeatMode: 3, // Triangular
-            shapeMode: 0, // Linear
-            direction: gradientDirection,
-            length: gradientScale,
-            start: start,
-            bands: config.bands || [
-                {
-                    interpolation: 2, // Sinusoidal for smooth transitions
-                    colorStart: 0xffffff,
-                    colorEnd: [ 1, 1, 1, 0 ],
-                    size: gradientRadius
-                },
-                {
-                    colorStart: [ 1, 1, 1, 0 ],
-                    size: 1 - gradientRadius
-                }
-            ]
-        }
-    };
-    var gradient = target.scene.make.gradient(gradientConfig, false);
+    var output = [];
 
-    // Create displacement effect.
-    if (config.displacementMap)
+    for (var i = 0; i < items.length; i++)
     {
-        var displacement = config.displacement || 0.1;
-        gradient.enableFilters().filters.internal.addDisplacement(config.displacementMap, displacement, displacement);
-    }
+        var item = items[i];
 
-    // Create DynamicTexture.
-    var key = UUID();
-    var textures = target.scene.textures;
-    while (textures.exists(key))
-    {
-        key = UUID();
-    }
-    var dynamicTexture = textures.addDynamicTexture(key, gradient.width, gradient.height);
+        // Create Gradient object.
+        var gradientConfig = {
+            origin: 0,
+            width: gradientWidth,
+            height: gradientHeight,
+            config: {
+                offset: -gradientRadius,
+                repeatMode: 3, // Triangular
+                shapeMode: 0, // Linear
+                direction: gradientDirection,
+                length: gradientScale,
+                start: start,
+                bands: config.bands || [
+                    {
+                        interpolation: 2, // Sinusoidal for smooth transitions
+                        colorStart: 0xffffff,
+                        colorEnd: [ 1, 1, 1, 0 ],
+                        size: gradientRadius
+                    },
+                    {
+                        colorStart: [ 1, 1, 1, 0 ],
+                        size: 1 - gradientRadius
+                    }
+                ]
+            }
+        };
+        var gradient = scene.make.gradient(gradientConfig, false);
 
-    // Create Tween.
-    var tween = target.scene.tweens.add({
-        targets: gradient,
-        offset: 1 + gradientRadius,
-        repeat: -1,
-        yoyo: !!config.yoyo,
-        ease: config.ease,
-        duration: config.duration || 2000,
-        repeatDelay: config.repeatDelay || 0,
-        onUpdate: function ()
+        // Create displacement effect.
+        if (config.displacementMap)
         {
-            dynamicTexture.clear().draw(gradient).render();
+            var displacement = config.displacement || 0.1;
+            gradient.enableFilters().filters.internal.addDisplacement(config.displacementMap, displacement, displacement);
         }
-    });
 
-    // Combine gradient texture with target.
-    var filterList = config.useExternal ? target.filters.external : target.filters.internal;
-    var blendFilter;
-    var parallelFilters;
-    var colorFactor = config.colorFactor || [ 1.15, 0.85, 0.85, 1 ];
-    if (!config.reveal)
-    {
-        parallelFilters = filterList.addParallelFilters();
-        blendFilter = parallelFilters.top.addBlend(key, BlendModes.MULTIPLY, 1, colorFactor);
-        parallelFilters.blend.blendMode = BlendModes.ADD;
-    }
-    else
-    {
-        blendFilter = filterList.addBlend(key, BlendModes.MULTIPLY, 1, colorFactor);
-    }
+        // Create DynamicTexture.
+        var key = UUID();
+        var textures = scene.textures;
+        while (textures.exists(key))
+        {
+            key = UUID();
+        }
+        var dynamicTexture = textures.addDynamicTexture(key, gradient.width, gradient.height);
 
-    // Set up tidy-up.
-    // Gradient is only referenced from the tween, and will self-dispose.
-    // Filters will self-dispose.
-    // Tween and dynamic texture must be removed if the target is destroyed.
-    var tidyup = function ()
-    {
-        tween.destroy();
-        dynamicTexture.destroy();
-    };
-    if (target instanceof GameObject)
-    {
-        target.on(DESTROY, tidyup);
-    }
-    else
-    {
-        target.on(DESTROY_EVENT, tidyup);
+        // Create Tween.
+        var tween = scene.tweens.add({
+            targets: gradient,
+            offset: 1 + gradientRadius,
+            repeat: -1,
+            yoyo: !!config.yoyo,
+            ease: config.ease,
+            duration: config.duration || 2000,
+            repeatDelay: config.repeatDelay || 0,
+            onUpdate: function ()
+            {
+                dynamicTexture.clear().draw(gradient).render();
+            }
+        });
+
+        // Enable filters on target.
+        if (item instanceof GameObject)
+        {
+            item.enableFilters();
+        }
+
+        // Combine gradient texture with target.
+        var filterList = config.useExternal ? item.filters.external : item.filters.internal;
+        var blendFilter;
+        var parallelFilters;
+        var colorFactor = config.colorFactor || [ 1.15, 0.85, 0.85, 1 ];
+        if (!config.reveal)
+        {
+            parallelFilters = filterList.addParallelFilters();
+            blendFilter = parallelFilters.top.addBlend(key, BlendModes.MULTIPLY, 1, colorFactor);
+            parallelFilters.blend.blendMode = BlendModes.ADD;
+        }
+        else
+        {
+            blendFilter = filterList.addBlend(key, BlendModes.MULTIPLY, 1, colorFactor);
+        }
+
+        // Set up tidy-up.
+        // Gradient is only referenced from the tween, and will self-dispose.
+        // Filters will self-dispose.
+        // Tween and dynamic texture must be removed if the target is destroyed.
+        var tidyup = function ()
+        {
+            tween.destroy();
+            dynamicTexture.destroy();
+        };
+        if (item instanceof GameObject)
+        {
+            item.on(DESTROY, tidyup);
+        }
+        else
+        {
+            item.on(DESTROY_EVENT, tidyup);
+        }
+
+        output.push({
+            item: item,
+            dynamicTexture: dynamicTexture,
+            gradient: gradient,
+            tween: tween,
+            parallelFilters: parallelFilters,
+            blendFilter: blendFilter
+        });
     }
 
     // Return relevant objects.
-    return {
-        dynamicTexture: dynamicTexture,
-        gradient: gradient,
-        tween: tween,
-        parallelFilters: parallelFilters,
-        blendFilter: blendFilter
-    };
+    return output;
 };
 
 module.exports = AddEffectShine;

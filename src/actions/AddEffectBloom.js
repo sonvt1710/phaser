@@ -7,7 +7,7 @@
 var BlendModes = require('../renderer/BlendModes');
 
 /**
- * Adds a Bloom effect to a Camera or GameObject.
+ * Adds a Bloom effect to a Camera or GameObject or list thereof.
  *
  * Bloom is a phenomenon where bright light spreads across an image.
  * It can be used to add to the realism of a scene,
@@ -46,7 +46,7 @@ var BlendModes = require('../renderer/BlendModes');
  *
  * @example
  * // Access the filters that make up a Bloom effect.
- * const { parallelFilters, threshold, blur } = Phaser.Actions.AddEffectBloom(this.cameras.main);
+ * const { parallelFilters, threshold, blur } = Phaser.Actions.AddEffectBloom(this.cameras.main)[0]; // The return is an array.
  *
  * // Destroy the bloom effect.
  * parallelFilters.destroy();
@@ -54,13 +54,14 @@ var BlendModes = require('../renderer/BlendModes');
  * @function Phaser.Actions.AddEffectBloom
  * @since 4.0.0
  *
- * @param {Phaser.Cameras.Scene2D.Camera|Phaser.GameObjects.GameObject} target - Recipient of the Bloom effect
+ * @param {Phaser.Cameras.Scene2D.Camera|Phaser.GameObjects.GameObject|Array.<(Phaser.Cameras.Scene2D.Camera|Phaser.GameObjects.GameObject)>} items - Recipients of the Bloom effect
  * @param {Phaser.Types.Actions.AddEffectBloomConfig} [config] - Initial configuration of the Bloom effect.
  *
- * @return {Phaser.Types.Actions.AddEffectBloomReturn} An object containing the filters which were created.
+ * @return {Phaser.Types.Actions.AddEffectBloomReturn[]} A list of objects containing the filters which were created.
  */
-var AddEffectBloom = function (target, config)
+var AddEffectBloom = function (items, config)
 {
+    if (!Array.isArray(items)) { items = [ items ]; }
     if (!config) { config = {}; }
     var threshold = config.threshold === undefined ? 0.5 : config.threshold;
     var blurRadius = config.blurRadius === undefined ? 2 : config.blurRadius;
@@ -69,19 +70,28 @@ var AddEffectBloom = function (target, config)
     var blendAmount = config.blendAmount === undefined ? 1 : config.blendAmount;
     var blendMode = config.blendMode === undefined ? BlendModes.ADD : config.blendMode;
 
-    if (target.enableFilters) { target.enableFilters(); }
-    var filterList = config.useInternal ? target.filters.internal : target.filters.external;
-    var parallelFilters = filterList.addParallelFilters();
-    var thresholdFilter = parallelFilters.top.addThreshold(threshold, 1);
-    var blurFilter = parallelFilters.top.addBlur(blurQuality, blurRadius, blurRadius, 1, 0xffffff, blurSteps);
-    parallelFilters.blend.blendMode = blendMode;
-    parallelFilters.blend.amount = blendAmount;
+    var output = [];
 
-    return {
-        parallelFilters: parallelFilters,
-        threshold: thresholdFilter,
-        blur: blurFilter
-    };
+    for (var i = 0; i < items.length; i++)
+    {
+        var item = items[i];
+        if (item.enableFilters) { item.enableFilters(); }
+        var filterList = config.useInternal ? item.filters.internal : item.filters.external;
+        var parallelFilters = filterList.addParallelFilters();
+        var thresholdFilter = parallelFilters.top.addThreshold(threshold, 1);
+        var blurFilter = parallelFilters.top.addBlur(blurQuality, blurRadius, blurRadius, 1, 0xffffff, blurSteps);
+        parallelFilters.blend.blendMode = blendMode;
+        parallelFilters.blend.amount = blendAmount;
+
+        output.push({
+            item: item,
+            parallelFilters: parallelFilters,
+            threshold: thresholdFilter,
+            blur: blurFilter
+        });
+    }
+
+    return output;
 };
 
 module.exports = AddEffectBloom;

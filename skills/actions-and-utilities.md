@@ -125,7 +125,7 @@ Actions like `PlaceOnCircle`, `PlaceOnLine`, `RandomRectangle`, etc. accept Phas
 |---|---|---|
 | `GridAlign` | `(items, config)` | Arrange in grid; config: `{ width, height, cellWidth, cellHeight, position, x, y }` |
 | `AlignTo` | `(items, position, offsetX?, offsetY?)` | Chain-align each item next to the previous one using `Phaser.Display.Align` constants |
-| `FitToRegion` | `(item, scaleMode?, region?, itemCoverage?)` | Scale/position a single GO to fill a rectangle (v4.0.0+). scaleMode: 0=stretch, -1=fit inside, 1=cover outside |
+| `FitToRegion` | `(items, scaleMode?, region?, itemCoverage?)` | Scale/position each GO to fill a rectangle (v4.0.0+). scaleMode: 0=stretch, -1=fit inside, 1=cover outside |
 
 ### Distribution and Interpolation
 
@@ -159,9 +159,9 @@ Actions like `PlaceOnCircle`, `PlaceOnLine`, `RandomRectangle`, etc. accept Phas
 
 | Action | Signature | Description |
 |---|---|---|
-| `AddEffectBloom` | `(target, config?)` | Add Bloom filter effect to a Camera or GO. Returns `{ parallelFilters, threshold, blur }` |
-| `AddEffectShine` | `(target, config?)` | Add Shine filter effect |
-| `AddMaskShape` | `(target, config?)` | Apply a shape-based mask (circle, square, rectangle, ellipse) with optional blur |
+| `AddEffectBloom` | `(items, config?)` | Add Bloom filter effect to a Camera or GO. Returns `{ parallelFilters, threshold, blur }[]` |
+| `AddEffectShine` | `(items, config?)` | Add Shine filter effect |
+| `AddMaskShape` | `(items, config?)` | Apply a shape-based mask (circle, square, rectangle, ellipse) with optional blur |
 
 ---
 
@@ -320,8 +320,7 @@ const keys = Phaser.Utils.Array.NumberArray(1, 10, 'frame_', '.png');
 - **`StableSort` uses native `Array.sort` when the engine supports stable sorting**, falling back to merge sort only when needed.
 - **`Shuffle` (both Actions and Utils.Array) modifies the array in-place** and returns it.
 - **`GetValue` vs `GetFastValue`**: Use `GetFastValue` when the key is always top-level (no dots). It skips dot-path parsing and is faster in hot loops.
-- **`FitToRegion` is for a single Game Object**, not an array. It is the only action that does not take an array as its first argument.
-- **`AddEffectBloom` / `AddEffectShine` / `AddMaskShape` are v4-only** filter-based effects. They target a single Camera or Game Object, not arrays.
+- **`AddEffectBloom` / `AddEffectShine` / `AddMaskShape` are v4-only** filter-based effects. They return arrays of created effects instead of the input.
 
 ---
 

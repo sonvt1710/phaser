@@ -2,6 +2,7 @@
  * @typedef {object} Phaser.Types.Actions.AddEffectShineReturn
  * @since 4.0.0
  *
+ * @property {Phaser.Cameras.Scene2D.Camera|Phaser.GameObjects.GameObject} item - The object or camera to which the shine is applied.
  * @property {Phaser.GameObjects.Gradient} gradient - The gradient which controls the shine area. This is not added to the scene, so it will be garbage collected once all references and the tween are destroyed.
  * @property {Phaser.Textures.DynamicTexture} dynamicTexture - The texture where the gradient is rendered, after any filters are applied. This will be destroyed when the target is destroyed. You can destroy it earlier, but it is accessed by the tween, so ensure the tween has stopped.
  * @property {Phaser.Tweens.Tween} tween - The tween which controls the gradient motion. When this updates, the dynamicTexture is redrawn. This will be destroyed when the target is destroyed. You can destroy it earlier to stop the gradient from updating.
