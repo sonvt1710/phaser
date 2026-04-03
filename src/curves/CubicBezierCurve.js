@@ -101,7 +101,7 @@ var CubicBezierCurve = new Class({
     },
 
     /**
-     * Returns the resolution of this curve.
+     * Returns the resolution of this curve, which is the number of points used to approximate it when calculating lengths or sampling. For a Cubic Bezier, this is proportional to the requested number of divisions.
      *
      * @method Phaser.Curves.CubicBezier#getResolution
      * @since 3.0.0

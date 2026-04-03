@@ -486,7 +486,7 @@ var TimeStep = new Class({
 
     /**
      * Resets the time, lastTime, fps averages and delta history.
-     * Called automatically when a browser sleeps them resumes.
+     * Called automatically when a browser sleeps then resumes.
      *
      * @method Phaser.Core.TimeStep#resetDelta
      * @since 3.0.0

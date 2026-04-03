@@ -204,7 +204,7 @@ var Curve = new Class({
     },
 
     /**
-     * Get total curve arc length
+     * Returns the total arc length of the curve, in pixels. The length is calculated by summing the distances between sampled points along the curve.
      *
      * @method Phaser.Curves.Curve#getLength
      * @since 3.0.0
@@ -490,7 +490,7 @@ var Curve = new Class({
     },
 
     /**
-     * Given a distance in pixels, get a t to find p.
+     * Given a distance in pixels along the curve, returns the corresponding t parameter value that can be used with `getPoint()` to find the position at that distance. This gives you equidistant points along the curve.
      *
      * @method Phaser.Curves.Curve#getTFromDistance
      * @since 3.0.0
@@ -511,7 +511,7 @@ var Curve = new Class({
     },
 
     /**
-     * Given u ( 0 .. 1 ), get a t to find p. This gives you points which are equidistant.
+     * Maps a uniform parameter u (0 to 1, distributed evenly by arc length) to the raw curve parameter t. This mapping ensures that points sampled at regular intervals of u will be equidistant along the curve, unlike the raw t parameter which may produce uneven spacing.
      *
      * @method Phaser.Curves.Curve#getUtoTmapping
      * @since 3.0.0

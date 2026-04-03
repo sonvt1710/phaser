@@ -160,7 +160,7 @@ var EllipseCurve = new Class({
     },
 
     /**
-     * Get the resolution of the curve.
+     * Returns the resolution of this curve, which is the number of points used to approximate it. For an Ellipse, this is double the requested divisions to provide accurate arc length calculations.
      *
      * @method Phaser.Curves.Ellipse#getResolution
      * @since 3.0.0

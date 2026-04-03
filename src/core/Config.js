@@ -385,7 +385,7 @@ var Config = new Class({
         this.pathDetailThreshold = GetValue(renderConfig, 'pathDetailThreshold', 1, config);
 
         /**
-         * @const {boolean} Phaser.Core.Config#pixelArt - Prevent pixel art from becoming blurred when scaled. It will remain crisp (tells the WebGL renderer to automatically create textures using a linear filter mode).
+         * @const {boolean} Phaser.Core.Config#pixelArt - Prevent pixel art from becoming blurred when scaled. It will remain crisp (tells the WebGL renderer to automatically create textures using a nearest-neighbor filter mode). When enabled, this also sets `antialias` and `antialiasGL` to `false` and `roundPixels` to `true`.
          */
         this.pixelArt = GetValue(renderConfig, 'pixelArt', this.zoom !== 1, config);
 
@@ -492,7 +492,7 @@ var Config = new Class({
         this.physics = GetValue(config, 'physics', {});
 
         /**
-         * @const {(boolean|string)} Phaser.Core.Config#defaultPhysicsSystem - The default physics system. It will be started for each scene. Either 'arcade', 'impact' or 'matter'.
+         * @const {(boolean|string)} Phaser.Core.Config#defaultPhysicsSystem - The default physics system. It will be started for each scene. Either 'arcade' or 'matter'.
          */
         this.defaultPhysicsSystem = GetValue(this.physics, 'default', false);
 

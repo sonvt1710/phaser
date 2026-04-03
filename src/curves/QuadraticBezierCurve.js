@@ -11,7 +11,9 @@ var Vector2 = require('../math/Vector2');
 
 /**
  * @classdesc
- * A quadratic Bézier curve constructed from two control points.
+ * A quadratic Bézier curve constructed from three points: a start point, a single control
+ * point, and an end point. This is a second-degree Bézier curve, where the control point
+ * influences the curvature of the path between the start and end points.
  *
  * @class QuadraticBezier
  * @extends Phaser.Curves.Curve
@@ -88,7 +90,7 @@ var QuadraticBezier = new Class({
     },
 
     /**
-     * Get the resolution of the curve.
+     * Returns the resolution of this curve, which is the number of points used to approximate it. For a Quadratic Bezier, this is proportional to the requested number of divisions.
      *
      * @method Phaser.Curves.QuadraticBezier#getResolution
      * @since 3.2.0

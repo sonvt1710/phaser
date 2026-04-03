@@ -1011,7 +1011,7 @@ var AnimationManager = new Class({
 
     /**
      * Returns the Animation data as JavaScript object based on the given key.
-     * Or, if not key is defined, it will return the data of all animations as array of objects.
+     * Or, if no key is defined, it will return the data of all animations as array of objects.
      *
      * @method Phaser.Animations.AnimationManager#toJSON
      * @since 3.0.0

@@ -112,7 +112,7 @@ var LineCurve = new Class({
     },
 
     /**
-     * Gets the resolution of the line.
+     * Returns the resolution of this curve. Since a line is perfectly straight, this always returns 1 regardless of the requested divisions.
      *
      * @method Phaser.Curves.Line#getResolution
      * @since 3.0.0

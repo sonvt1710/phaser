@@ -128,7 +128,7 @@ var SplineCurve = new Class({
     },
 
     /**
-     * Get the resolution of the curve.
+     * Returns the resolution of this curve, which is the number of points used to approximate it per segment. For a Spline, this scales with the number of points and the requested divisions.
      *
      * @method Phaser.Curves.Spline#getResolution
      * @since 3.0.0
