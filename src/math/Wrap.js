@@ -5,7 +5,7 @@
  */
 
 /**
- * Wrap the given `value` between `min` and `max - 1`.
+ * Wrap the given `value` between `min` (inclusive) and `max` (exclusive).
  *
  * @function Phaser.Math.Wrap
  * @since 3.0.0

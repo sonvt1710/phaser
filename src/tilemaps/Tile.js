@@ -35,7 +35,7 @@ var TintModes = require('../renderer/TintModes');
  * @param {number} baseWidth - The base width a tile in the map (in pixels). Tiled maps support
  * multiple tileset sizes within one map, but they are still placed at intervals of the base
  * tile width.
- * @param {number} baseHeight - The base height of the tile in pixels (in pixels). Tiled maps
+ * @param {number} baseHeight - The base height of the tile in pixels. Tiled maps
  * support multiple tileset sizes within one map, but they are still placed at intervals of the
  * base tile height.
  */
@@ -707,7 +707,7 @@ var Tile = new Class({
     },
 
     /**
-     * Set a callback to be called when this tile is hit by an object. The callback must true for
+     * Set a callback to be called when this tile is hit by an object. The callback must return true for
      * collision processing to take place.
      *
      * @method Phaser.Tilemaps.Tile#setCollisionCallback
@@ -743,7 +743,7 @@ var Tile = new Class({
      * @param {number} tileWidth - The width of the tile in pixels.
      * @param {number} tileHeight - The height of the tile in pixels.
      * @param {number} baseWidth - The base width a tile in the map (in pixels).
-     * @param {number} baseHeight - The base height of the tile in pixels (in pixels).
+     * @param {number} baseHeight - The base height of the tile in pixels.
      *
      * @return {this} This Tile object instance.
      */

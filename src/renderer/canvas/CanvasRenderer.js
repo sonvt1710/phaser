@@ -21,7 +21,7 @@ var TransformMatrix = require('../../gameobjects/components/TransformMatrix');
  * @classdesc
  * The Canvas Renderer is responsible for managing 2D canvas rendering contexts,
  * including the one used by the Games canvas. It tracks the internal state of a
- * given context and can renderer textured Game Objects to it, taking into
+ * given context and can render textured Game Objects to it, taking into
  * account alpha, blending, and scaling.
  *
  * @class CanvasRenderer

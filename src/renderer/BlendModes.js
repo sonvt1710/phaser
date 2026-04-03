@@ -243,7 +243,7 @@ module.exports = {
     SOURCE_OUT: 19,
 
     /**
-     * Source-out blend mode. For Canvas only.
+     * Source-atop blend mode. For Canvas only.
      * The new shape is only drawn where it overlaps the existing canvas content.
      *
      * @name Phaser.BlendModes.SOURCE_ATOP
@@ -287,7 +287,7 @@ module.exports = {
     DESTINATION_OUT: 23,
 
     /**
-     * Destination-out blend mode. For Canvas only.
+     * Destination-atop blend mode. For Canvas only.
      * The existing canvas is only kept where it overlaps the new shape. The new shape is drawn behind the canvas content.
      *
      * @name Phaser.BlendModes.DESTINATION_ATOP

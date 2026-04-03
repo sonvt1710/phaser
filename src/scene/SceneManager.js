@@ -1304,7 +1304,7 @@ var SceneManager = new Class({
     },
 
     /**
-     * Sleeps one one Scene and starts the other.
+     * Sleeps one Scene and starts the other.
      *
      * @method Phaser.Scenes.SceneManager#switch
      * @since 3.0.0

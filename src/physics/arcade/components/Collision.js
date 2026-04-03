@@ -84,7 +84,7 @@ var Collision = {
      * @method Phaser.Physics.Arcade.Components.Collision#removeCollidesWith
      * @since 3.70.0
      *
-     * @param {number} category - The collision category to add.
+     * @param {number} category - The collision category to remove.
      *
      * @return {this} This Game Object.
      */

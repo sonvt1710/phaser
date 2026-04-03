@@ -1616,7 +1616,7 @@ var ScaleManager = new Class({
     },
 
     /**
-     * Get Rectange of visible area.
+     * Get Rectangle of visible area.
      *
      * @method Phaser.Scale.ScaleManager#getViewPort
      * @since 3.60.0

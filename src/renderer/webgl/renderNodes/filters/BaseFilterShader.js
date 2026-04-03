@@ -148,6 +148,20 @@ var BaseFilterShader = new Class({
         this.programManager.setUniform('uMainSampler', 0);
     },
 
+    /**
+     * Runs the filter shader. This method handles the full rendering pipeline for the filter:
+     * it acquires an output DrawingContext (or uses the one provided), computes
+     * padded quad vertices, populates the vertex buffer, sets up textures and uniforms
+     * via the shader program, issues the draw call, and releases the input context.
+     *
+     * @method Phaser.Renderer.WebGL.RenderNodes.BaseFilterShader#run
+     * @since 4.0.0
+     * @param {Phaser.Filters.Controller} controller - The filter controller that owns this filter.
+     * @param {Phaser.Renderer.WebGL.DrawingContext} inputDrawingContext - The input drawing context containing the source texture.
+     * @param {Phaser.Renderer.WebGL.DrawingContext} [outputDrawingContext] - An optional output drawing context. If not provided, one will be obtained from the pool.
+     * @param {Phaser.Types.Filters.FilterPadding} [padding] - Optional padding to apply. If not provided, the controller's padding is used.
+     * @return {Phaser.Renderer.WebGL.DrawingContext} The output drawing context containing the filtered result.
+     */
     run: function (controller, inputDrawingContext, outputDrawingContext, padding)
     {
         var manager = this.manager;

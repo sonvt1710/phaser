@@ -463,7 +463,7 @@ var Tilemap = new Class({
      * coordinates) within the layer. This copies all tile properties & recalculates collision
      * information in the destination region.
      *
-     * If no layer specified, the map's current layer is used. This cannot be applied to StaticTilemapLayers.
+     * If no layer specified, the map's current layer is used.
      *
      * @method Phaser.Tilemaps.Tilemap#copy
      * @since 3.0.0
@@ -984,7 +984,7 @@ var Tilemap = new Class({
      * @param {Phaser.Cameras.Scene2D.Camera} [camera] - The Camera to use when calculating the tile index from the world values.
      * @param {(string|number|Phaser.Tilemaps.TilemapLayer)} [layer] - The tile layer to use. If not given the current layer is used.
      *
-     * @return {?Phaser.GameObjects.Sprite[]} Returns an array of Tiles, or null if the layer given was invalid.
+     * @return {?Phaser.GameObjects.Sprite[]} Returns an array of Sprites, or null if the layer given was invalid.
      */
     createFromTiles: function (indexes, replacements, spriteConfig, scene, camera, layer)
     {
@@ -1001,7 +1001,6 @@ var Tilemap = new Class({
      * Collision information in the region will be recalculated.
      *
      * If no layer specified, the map's current layer is used.
-     * This cannot be applied to StaticTilemapLayers.
      *
      * @method Phaser.Tilemaps.Tilemap#fill
      * @since 3.0.0
@@ -1108,7 +1107,7 @@ var Tilemap = new Class({
      * @param {boolean} [reverse=false] - If true it will scan the layer in reverse, starting at the bottom-right. Otherwise it scans from the top-left.
      * @param {(string|number|Phaser.Tilemaps.TilemapLayer)} [layer] - The tile layer to use. If not given the current layer is used.
      *
-     * @return {?Phaser.Tilemaps.Tile} Returns a Tiles, or null if the layer given was invalid.
+     * @return {?Phaser.Tilemaps.Tile} Returns a Tile, or null if the layer given was invalid.
      */
     findByIndex: function (findIndex, skip, reverse, layer)
     {
@@ -1169,7 +1168,7 @@ var Tilemap = new Class({
      * @param {Phaser.Types.Tilemaps.FilteringOptions} [filteringOptions] - Optional filters to apply when getting the tiles.
      * @param {(string|number|Phaser.Tilemaps.TilemapLayer)} [layer] - The Tile layer to run the search on. If not provided will use the current layer.
      *
-     * @return {?Phaser.Tilemaps.Tile} Returns a Tiles, or null if the layer given was invalid.
+     * @return {?Phaser.Tilemaps.Tile} Returns a Tile, or null if the layer given was invalid.
      */
     findTile: function (callback, context, tileX, tileY, width, height, filteringOptions, layer)
     {

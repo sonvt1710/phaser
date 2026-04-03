@@ -63,7 +63,7 @@ var MATH_CONST = {
 
     /**
      * The minimum safe integer this browser supports.
-     * We use a const for backward compatibility with Internet Explorer.
+     * We use a const for backward compatibility with older browsers.
      *
      * @name Phaser.Math.MIN_SAFE_INTEGER
      * @type {number}
@@ -73,7 +73,7 @@ var MATH_CONST = {
 
     /**
      * The maximum safe integer this browser supports.
-     * We use a const for backward compatibility with Internet Explorer.
+     * We use a const for backward compatibility with older browsers.
      *
      * @name Phaser.Math.MAX_SAFE_INTEGER
      * @type {number}

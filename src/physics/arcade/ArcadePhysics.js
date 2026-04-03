@@ -148,7 +148,7 @@ var ArcadePhysics = new Class({
 
     /**
      * Causes `World.update` to be automatically called each time the Scene
-     * emits and `UPDATE` event. This is the default setting, so only needs
+     * emits an `UPDATE` event. This is the default setting, so only needs
      * calling if you have specifically disabled it.
      *
      * @method Phaser.Physics.Arcade.ArcadePhysics#enableUpdate
@@ -161,7 +161,7 @@ var ArcadePhysics = new Class({
 
     /**
      * Causes `World.update` to **not** be automatically called each time the Scene
-     * emits and `UPDATE` event.
+     * emits an `UPDATE` event.
      *
      * If you wish to run the World update at your own rate, or from your own
      * component, then you should call this method to disable the built-in link,
@@ -613,7 +613,7 @@ var ArcadePhysics = new Class({
      * @since 3.0.0
      *
      * @param {number} angle - The angle in degrees calculated in clockwise positive direction (down = 90 degrees positive, right = 0 degrees positive, up = 90 degrees negative)
-     * @param {number} [speed=60] - The speed it will move, in pixels per second squared.
+     * @param {number} [speed=60] - The speed it will move, in pixels per second.
      * @param {Phaser.Math.Vector2} [vec2] - The Vector2 in which the x and y properties will be set to the calculated velocity.
      *
      * @return {Phaser.Math.Vector2} The Vector2 that stores the velocity.
@@ -634,7 +634,7 @@ var ArcadePhysics = new Class({
      * @since 3.0.0
      *
      * @param {number} rotation - The angle in radians.
-     * @param {number} [speed=60] - The speed it will move, in pixels per second squared
+     * @param {number} [speed=60] - The speed it will move, in pixels per second.
      * @param {Phaser.Math.Vector2} [vec2] - The Vector2 in which the x and y properties will be set to the calculated velocity.
      *
      * @return {Phaser.Math.Vector2} The Vector2 that stores the velocity.

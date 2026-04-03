@@ -211,6 +211,17 @@ var ShaderQuad = new Class({
         };
     },
 
+    /**
+     * Renders a quad using the shader program. Transforms the quad vertices
+     * based on the game object properties, populates the vertex buffer,
+     * sets up uniforms and textures, and issues a draw call.
+     *
+     * @method Phaser.Renderer.WebGL.RenderNodes.ShaderQuad#run
+     * @since 4.0.0
+     * @param {Phaser.Renderer.WebGL.DrawingContext} drawingContext - The current drawing context.
+     * @param {Phaser.GameObjects.Shader} gameObject - The Shader game object being rendered.
+     * @param {Phaser.GameObjects.Components.TransformMatrix} parentMatrix - The parent transform matrix.
+     */
     run: function (drawingContext, gameObject, parentMatrix)
     {
         var manager = this.manager;
@@ -326,6 +337,15 @@ var ShaderQuad = new Class({
         this.onRunEnd(drawingContext);
     },
 
+    /**
+     * Extracts the WebGL textures from the game object's texture list
+     * and returns them as an array for use during rendering.
+     *
+     * @method Phaser.Renderer.WebGL.RenderNodes.ShaderQuad#setupTextures
+     * @since 4.0.0
+     * @param {Phaser.GameObjects.Shader} gameObject - The Shader game object to extract textures from.
+     * @return {Phaser.Renderer.WebGL.Wrappers.WebGLTextureWrapper[]} An array of WebGL textures.
+     */
     setupTextures: function (gameObject)
     {
         var textures = gameObject.textures;

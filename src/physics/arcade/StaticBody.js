@@ -407,7 +407,7 @@ var StaticBody = new Class({
         this.collideWorldBounds = false;
 
         /**
-         * Whether this StaticBody is checked for collisions and for which directions. You can set `checkCollision.none = false` to disable collision checks.
+         * Whether this StaticBody is checked for collisions and for which directions. You can set `checkCollision.none = true` to disable collision checks.
          *
          * @name Phaser.Physics.Arcade.StaticBody#checkCollision
          * @type {Phaser.Types.Physics.Arcade.ArcadeBodyCollision}
@@ -874,7 +874,7 @@ var StaticBody = new Class({
      * @method Phaser.Physics.Arcade.StaticBody#deltaX
      * @since 3.0.0
      *
-     * @return {number} The change in this StaticBody's velocity from the previous step. Always zero.
+     * @return {number} The change in horizontal position since the last step, in pixels. Always zero for a Static Body.
      */
     deltaX: function ()
     {
@@ -887,7 +887,7 @@ var StaticBody = new Class({
      * @method Phaser.Physics.Arcade.StaticBody#deltaY
      * @since 3.0.0
      *
-     * @return {number} The change in this StaticBody's velocity from the previous step. Always zero.
+     * @return {number} The change in vertical position since the last step, in pixels. Always zero for a Static Body.
      */
     deltaY: function ()
     {

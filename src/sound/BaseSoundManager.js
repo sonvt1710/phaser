@@ -785,13 +785,13 @@ var BaseSoundManager = new Class({
 
     /**
      * Sets the global detuning of all sounds in [cents](https://en.wikipedia.org/wiki/Cent_%28music%29).
-     * The range of the value is -1200 to 1200, but we recommend setting it to [50](https://en.wikipedia.org/wiki/50_Cent).
+     * The range of the value is -1200 to 1200, but we recommend keeping it within a reasonable range for musical purposes.
      *
      * @method Phaser.Sound.BaseSoundManager#setDetune
      * @fires Phaser.Sound.Events#GLOBAL_DETUNE
      * @since 3.3.0
      *
-     * @param {number} value - The range of the value is -1200 to 1200, but we recommend setting it to [50](https://en.wikipedia.org/wiki/50_Cent).
+     * @param {number} value - The range of the value is -1200 to 1200, but we recommend keeping it within a reasonable range for musical purposes.
      *
      * @return {this} This Sound Manager.
      */
@@ -804,7 +804,7 @@ var BaseSoundManager = new Class({
 
     /**
      * Global detuning of all sounds in [cents](https://en.wikipedia.org/wiki/Cent_%28music%29).
-     * The range of the value is -1200 to 1200, but we recommend setting it to [50](https://en.wikipedia.org/wiki/50_Cent).
+     * The range of the value is -1200 to 1200, but we recommend keeping it within a reasonable range for musical purposes.
      *
      * @name Phaser.Sound.BaseSoundManager#detune
      * @type {number}

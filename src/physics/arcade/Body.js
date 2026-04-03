@@ -646,7 +646,7 @@ var Body = new Class({
          * colliding body. If that body is also not pushable, then the separation will be split
          * between them evenly.
          *
-         * If you want your body to never move or seperate at all, see the `setImmovable` method.
+         * If you want your body to never move or separate at all, see the `setImmovable` method.
          *
          * By default, Dynamic Bodies are always pushable.
          *
@@ -1734,7 +1734,7 @@ var Body = new Class({
      * @method Phaser.Physics.Arcade.Body#deltaAbsX
      * @since 3.0.0
      *
-     * @return {number} The delta value.
+     * @return {number} The absolute change in horizontal position since the last step, in pixels.
      */
     deltaAbsX: function ()
     {
@@ -1747,7 +1747,7 @@ var Body = new Class({
      * @method Phaser.Physics.Arcade.Body#deltaAbsY
      * @since 3.0.0
      *
-     * @return {number} The delta value.
+     * @return {number} The absolute change in vertical position since the last step, in pixels.
      */
     deltaAbsY: function ()
     {
@@ -1764,7 +1764,7 @@ var Body = new Class({
      * @method Phaser.Physics.Arcade.Body#deltaX
      * @since 3.0.0
      *
-     * @return {number} The delta value.
+     * @return {number} The change in horizontal position since the last step, in pixels.
      */
     deltaX: function ()
     {
@@ -1781,7 +1781,7 @@ var Body = new Class({
      * @method Phaser.Physics.Arcade.Body#deltaY
      * @since 3.0.0
      *
-     * @return {number} The delta value.
+     * @return {number} The change in vertical position since the last step, in pixels.
      */
     deltaY: function ()
     {
@@ -1836,7 +1836,7 @@ var Body = new Class({
      * @method Phaser.Physics.Arcade.Body#deltaZ
      * @since 3.0.0
      *
-     * @return {number} The delta value.
+     * @return {number} The change in rotation since the last step, in degrees.
      */
     deltaZ: function ()
     {

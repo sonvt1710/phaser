@@ -190,7 +190,7 @@ var List = new Class({
      * @genericUse {T[]} - [children,$return]
      *
      * @param {string} property - The property to lexically sort by.
-     * @param {function} [handler] - Provide your own custom handler function. Will receive 2 children which it should compare and return a boolean.
+     * @param {function} [handler] - Provide your own custom handler function. Will receive 2 children which it should compare and return a number (negative if the first should come before the second, positive if after, zero if equal).
      *
      * @return {Phaser.Structs.List} This List object.
      */

@@ -765,7 +765,7 @@ var Vector2 = new Class({
      * @param {Phaser.Math.Vector2} vecB - The vector to project onto.
      * @param {Phaser.Math.Vector2} [out] - The Vector2 object to store the position in. If not given, a new Vector2 instance is created.
      *
-     * @return {Phaser.Math.Vector2} This Vector2.
+     * @return {Phaser.Math.Vector2} The `out` Vector2 containing the projected values.
      */
     projectUnit: function (vecB, out)
     {

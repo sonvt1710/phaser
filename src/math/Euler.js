@@ -13,15 +13,20 @@ var tempMatrix = new Matrix4();
 
 /**
  * @classdesc
+ * Represents a set of Euler angles (rotation around X, Y, and Z axes) used for 3D rotations.
+ * Euler angles describe orientation using three successive rotations around the coordinate axes.
+ * The `order` property defines which axes and in what sequence the rotations are applied
+ * (e.g., 'XYZ' applies rotation around X first, then Y, then Z).
  *
  * @class Euler
  * @memberof Phaser.Math
  * @constructor
  * @since 3.50.0
  *
- * @param {number} [x] - The x component.
- * @param {number} [y] - The y component.
- * @param {number} [z] - The z component.
+ * @param {number} [x=0] - The rotation around the X axis, in radians.
+ * @param {number} [y=0] - The rotation around the Y axis, in radians.
+ * @param {number} [z=0] - The rotation around the Z axis, in radians.
+ * @param {string} [order='XYZ'] - The order in which rotations are applied. One of 'XYZ', 'YXZ', 'ZXY', 'ZYX', 'YZX', or 'XZY'.
  */
 var Euler = new Class({
 

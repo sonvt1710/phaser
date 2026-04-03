@@ -23,7 +23,7 @@ var ProcessX = require('./ProcessX');
  * @param {number} bias - A value to add to the delta value during overlap checking. Used to prevent sprite tunneling.
  * @param {number} [overlap] - If given then this value will be used as the overlap and no check will be run.
  *
- * @return {boolean} `true` if the two bodies overlap vertically, otherwise `false`.
+ * @return {boolean} `true` if the two bodies overlap horizontally, otherwise `false`.
  */
 var SeparateX = function (body1, body2, overlapOnly, bias, overlap)
 {

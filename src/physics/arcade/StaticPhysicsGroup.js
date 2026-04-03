@@ -98,7 +98,7 @@ var StaticPhysicsGroup = new Class({
         this.world = world;
 
         /**
-         * The scene this group belongs to.
+         * The type of physics body assigned to children of this group.
          *
          * @name Phaser.Physics.Arcade.StaticGroup#physicsType
          * @type {number}
