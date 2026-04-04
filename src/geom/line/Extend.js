@@ -16,6 +16,8 @@ var Length = require('./Length');
  *
  * Pass a value of zero to leave the start or end point unchanged.
  *
+ * The `left` value extends outward from the start point (x1, y1) along the line's direction, and the `right` value extends outward from the end point (x2, y2).
+ *
  * @function Phaser.Geom.Line.Extend
  * @since 3.16.0
  *

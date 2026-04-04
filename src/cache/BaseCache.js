@@ -11,11 +11,11 @@ var Events = require('./events');
 
 /**
  * @classdesc
- * The BaseCache is a base Cache class that can be used for storing references to any kind of data.
- *
- * Data can be added, retrieved and removed based on the given keys.
- *
- * Keys are string-based.
+ * A key-value store used by the Phaser framework to cache loaded assets and other data.
+ * Items are stored and retrieved using string-based keys. The BaseCache emits events when
+ * items are added or removed, allowing other systems to react to cache changes. Multiple
+ * BaseCache instances are owned by the CacheManager, one per asset type (JSON, binary,
+ * audio, etc.), and you can also create custom caches via `CacheManager.addCustom()`.
  *
  * @class BaseCache
  * @memberof Phaser.Cache

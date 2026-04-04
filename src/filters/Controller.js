@@ -132,7 +132,7 @@ var Controller = new Class({
     /**
      * Sets the padding override.
      * If this is set, the filter will use this padding instead of calculating them.
-     *it Call `setPaddingOverride(null)` to clear the override.
+     * Call `setPaddingOverride(null)` to clear the override.
      * Call `setPaddingOverride()` to set the padding to 0.
      *
      * @method Phaser.Filters.Controller#setPaddingOverride

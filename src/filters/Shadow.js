@@ -74,7 +74,8 @@ var Shadow = new Class({
         this.y = y;
 
         /**
-         * The amount of decay for the shadow effect.
+         * Controls how quickly the shadow fades over distance. Lower values produce longer,
+         * more gradual shadows; higher values produce shorter, more concentrated shadows.
          *
          * @name Phaser.Filters.Shadow#decay
          * @type {number}
@@ -83,7 +84,8 @@ var Shadow = new Class({
         this.decay = decay;
 
         /**
-         * The power of the shadow effect.
+         * An exponent applied to the shadow falloff curve. Higher values create sharper
+         * shadow edges; lower values create softer, more diffuse shadows.
          *
          * @name Phaser.Filters.Shadow#power
          * @type {number}
@@ -112,7 +114,8 @@ var Shadow = new Class({
         this.samples = samples;
 
         /**
-         * The intensity of the shadow effect.
+         * A multiplier for the overall shadow visibility. Higher values produce darker,
+         * more prominent shadows.
          *
          * @name Phaser.Filters.Shadow#intensity
          * @type {number}

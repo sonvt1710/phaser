@@ -48,7 +48,7 @@ var Line = new Class({
         this.type = GEOM_CONST.LINE;
 
         /**
-         * The x coordinate of the lines starting point.
+         * The x coordinate of the line's starting point.
          *
          * @name Phaser.Geom.Line#x1
          * @type {number}
@@ -57,7 +57,7 @@ var Line = new Class({
         this.x1 = x1;
 
         /**
-         * The y coordinate of the lines starting point.
+         * The y coordinate of the line's starting point.
          *
          * @name Phaser.Geom.Line#y1
          * @type {number}
@@ -66,7 +66,7 @@ var Line = new Class({
         this.y1 = y1;
 
         /**
-         * The x coordinate of the lines ending point.
+         * The x coordinate of the line's ending point.
          *
          * @name Phaser.Geom.Line#x2
          * @type {number}
@@ -75,7 +75,7 @@ var Line = new Class({
         this.x2 = x2;
 
         /**
-         * The y coordinate of the lines ending point.
+         * The y coordinate of the line's ending point.
          *
          * @name Phaser.Geom.Line#y2
          * @type {number}
@@ -149,10 +149,10 @@ var Line = new Class({
      * @method Phaser.Geom.Line#setTo
      * @since 3.0.0
      *
-     * @param {number} [x1=0] - The x coordinate of the lines starting point.
-     * @param {number} [y1=0] - The y coordinate of the lines starting point.
-     * @param {number} [x2=0] - The x coordinate of the lines ending point.
-     * @param {number} [y2=0] - The y coordinate of the lines ending point.
+     * @param {number} [x1=0] - The x coordinate of the line's starting point.
+     * @param {number} [y1=0] - The y coordinate of the line's starting point.
+     * @param {number} [x2=0] - The x coordinate of the line's ending point.
+     * @param {number} [y2=0] - The y coordinate of the line's ending point.
      *
      * @return {this} This Line object.
      */

@@ -25,7 +25,12 @@ var BatchHandler = require('./BatchHandler');
 
 /**
  * @classdesc
- * This RenderNode draws Standard Batch Render (SBR) quads in batches.
+ * The primary batch rendering node in Phaser's WebGL pipeline. It draws
+ * textured quads (used by Image, Sprite, BitmapText, TileSprite, and other
+ * Game Objects) in large batches for performance. Supports multi-texturing,
+ * normal-map-based lighting, and smooth pixel art rendering. Game Objects are
+ * accumulated into a vertex buffer and flushed to the GPU in a single draw
+ * call whenever possible.
  *
  * @class BatchHandlerQuad
  * @extends Phaser.Renderer.WebGL.RenderNodes.BatchHandler

@@ -13,7 +13,7 @@ var Random = require('./Random');
 
 /**
  * @classdesc
- * A Circle object.
+ * A Circle geometry object defined by a center position and radius.
  *
  * This is a geometry object, containing numerical values and related methods to inspect and modify them.
  * It is not a Game Object, in that you cannot add it to the display list, and it has no texture.

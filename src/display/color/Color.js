@@ -16,7 +16,12 @@ var RGBToHSV = require('./RGBToHSV');
 
 /**
  * @classdesc
- * The Color class holds a single color value and allows for easy modification and reading of it.
+ * A mutable color representation that stores RGBA values (0-255 range) with automatic conversion
+ * to WebGL-compatible normalized floats (0-1), HSV color space, CSS rgba strings, and packed
+ * 24/32-bit integer formats. Provides methods for color manipulation including saturation,
+ * lightness, brightness adjustments, grayscale, and randomization. Supports construction from
+ * RGB integers, hex strings, HSV values, or color objects. Used throughout Phaser for tinting,
+ * effects, and rendering.
  *
  * @class Color
  * @memberof Phaser.Display

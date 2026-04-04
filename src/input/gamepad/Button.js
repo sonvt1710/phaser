@@ -9,7 +9,9 @@ var Events = require('./events');
 
 /**
  * @classdesc
- * Contains information about a specific button on a Gamepad.
+ * Represents a single button on a Gamepad controller. Each Button has a `value` between 0 and 1
+ * (supporting analog pressure for triggers) and a `pressed` boolean state. When the value exceeds
+ * the configurable `threshold`, the button emits `BUTTON_DOWN` and `GAMEPAD_BUTTON_DOWN` events.
  * Button objects are created automatically by the Gamepad as they are needed.
  *
  * @class Button
@@ -57,7 +59,8 @@ var Button = new Class({
         this.index = index;
 
         /**
-         * Between 0 and 1.
+         * The current value of the button, between 0 (fully released) and 1 (fully pressed).
+         * For analog buttons like triggers, this reflects the pressure applied.
          *
          * @name Phaser.Input.Gamepad.Button#value
          * @type {number}

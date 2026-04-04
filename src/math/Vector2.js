@@ -14,8 +14,6 @@ var FuzzyEqual = require('../math/fuzzy/Equal');
  * @classdesc
  * A representation of a vector in 2D space.
  *
- * A two-component vector.
- *
  * @class Vector2
  * @memberof Phaser.Math
  * @constructor

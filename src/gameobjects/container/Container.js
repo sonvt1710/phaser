@@ -143,7 +143,8 @@ var Container = new Class({
         this.maxSize = -1;
 
         /**
-         * The cursor position.
+         * An internal cursor position used for iterating through the Container's children
+         * via methods such as `first`, `next`, `previous` and `last`.
          *
          * @name Phaser.GameObjects.Container#position
          * @type {number}

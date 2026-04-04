@@ -14,7 +14,7 @@
  * @param {number} y1 - The y coordinate of the first point.
  * @param {number} x2 - The x coordinate of the second point.
  * @param {number} y2 - The y coordinate of the second point.
- * @param {number} pow - The exponent.
+ * @param {number} [pow=2] - The exponent.
  *
  * @return {number} The distance between each point.
  */

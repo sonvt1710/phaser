@@ -18,6 +18,10 @@ var ValueToColor = require('../display/color/ValueToColor');
 /**
  * @classdesc
  * The active game configuration settings, parsed from a {@link Phaser.Types.Core.GameConfig} object.
+ * This class takes the raw configuration object passed to `new Phaser.Game()` and resolves all
+ * values, applying defaults where properties are not specified. The resulting Config instance is
+ * read-only and available via `game.config`. It controls fundamental aspects of the game including
+ * canvas dimensions, renderer type, physics settings, audio configuration, and plugin loading.
  *
  * @class Config
  * @memberof Phaser.Core

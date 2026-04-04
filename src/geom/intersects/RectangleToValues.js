@@ -5,7 +5,7 @@
  */
 
 /**
- * Check if rectangle intersects with values.
+ * Checks if a Rectangle intersects with a region defined by explicit left, right, top, and bottom boundary values.
  *
  * @function Phaser.Geom.Intersects.RectangleToValues
  * @since 3.0.0

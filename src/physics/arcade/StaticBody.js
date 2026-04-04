@@ -21,6 +21,10 @@ var Vector2 = require('../../math/Vector2');
  *
  * A Static Body can collide with other Bodies, but is never moved by collisions.
  *
+ * Static Bodies are ideal for platforms, walls, floors, and other immovable environmental
+ * elements. Unlike Dynamic Bodies, they have no velocity, acceleration, or gravity,
+ * and are not moved by collisions.
+ *
  * Its dynamic counterpart is {@link Phaser.Physics.Arcade.Body}.
  *
  * @class StaticBody

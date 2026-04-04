@@ -26,7 +26,10 @@ var tmpMat3 = new Matrix3();
 
 /**
  * @classdesc
- * A quaternion.
+ * A quaternion representing a rotation in 3D space. Quaternions avoid gimbal lock
+ * and provide smooth interpolation between orientations. The quaternion is stored as
+ * four components (x, y, z, w) where w defaults to 1, representing the identity
+ * (no rotation). Commonly used with Matrix4 for 3D transformations in WebGL rendering.
  *
  * @class Quaternion
  * @memberof Phaser.Math

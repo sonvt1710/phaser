@@ -54,18 +54,15 @@ var Tileset = require('./Tileset');
  * software package specifically for creating tile maps, and is available from:
  * http://www.mapeditor.org
  *
- * As of Phaser 3.50.0 the Tilemap API now supports the following types of map:
+ * The Tilemap API supports the following types of map:
  *
  * 1) Orthogonal
  * 2) Isometric
  * 3) Hexagonal
  * 4) Staggered
  *
- * Prior to this release, only orthogonal maps were supported.
- *
- * Another large change in 3.50 was the consolidation of Tilemap Layers. Previously, you created
- * either a Static or Dynamic Tilemap Layer. However, as of 3.50 the features of both have been
- * merged and the API simplified, so now there is just the single `TilemapLayer` class.
+ * All map types use the unified `TilemapLayer` class, which combines the capabilities of the
+ * former Static and Dynamic layers into a single, simplified API.
  *
  * A Tilemap has handy methods for getting and manipulating the tiles within a layer, allowing
  * you to build or modify the tilemap data at runtime.
@@ -73,7 +70,7 @@ var Tileset = require('./Tileset');
  * Note that all Tilemaps use a base tile size to calculate dimensions from, but that a
  * TilemapLayer may have its own unique tile size that overrides this.
  *
- * As of Phaser 3.21.0, if your tilemap includes layer groups (a feature of Tiled 1.2.0+) these
+ * If your tilemap includes layer groups (a feature of Tiled 1.2.0+) these
  * will be traversed and the following properties will impact children:
  *
  * - Opacity (blended with parent) and visibility (parent overrides child)

@@ -15,8 +15,12 @@ var XHRSettings = require('./XHRSettings');
 
 /**
  * @classdesc
- * The base File class used by all File Types that the Loader can support.
- * You shouldn't create an instance of a File directly, but should extend it with your own class, setting a custom type and processing methods.
+ * The base File class used by all File Types that the Loader can support. It manages the lifecycle
+ * of a single file from queue to download to processing to completion, handling XHR configuration,
+ * URL resolution, progress tracking, and error states. You should not create an instance of a File
+ * directly, but should extend it with your own class, setting a custom type and overriding the
+ * `onProcess` method to handle the loaded data. See `Phaser.Loader.FileTypes` for built-in file
+ * type examples.
  *
  * @class File
  * @memberof Phaser.Loader

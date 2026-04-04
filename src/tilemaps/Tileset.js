@@ -9,8 +9,10 @@ var Vector2 = require('../math/Vector2');
 
 /**
  * @classdesc
- * A Tileset is a combination of a single image containing the tiles and a container for data about
- * each tile.
+ * A Tileset is a combination of a single image containing the tiles and a container for data
+ * about each tile. It maps tile indexes (GIDs) to positions within the tileset image, stores
+ * per-tile properties and collision data, and supports tile spacing and margin. Tilesets are
+ * created automatically when parsing Tiled map data and are used by TilemapLayer during rendering.
  *
  * @class Tileset
  * @memberof Phaser.Tilemaps

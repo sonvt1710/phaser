@@ -11,6 +11,11 @@ var Class = require('../utils/Class');
  * A Global Plugin is installed just once into the Game owned Plugin Manager.
  * It can listen for Game events and respond to them.
  *
+ * Custom global plugins should extend this class and implement any needed lifecycle
+ * methods: `init` (called when the plugin is first created), `start` (called when the
+ * plugin is started), `stop` (called when the plugin is stopped), and `destroy` (called
+ * when the Game shuts down).
+ *
  * @class BasePlugin
  * @memberof Phaser.Plugins
  * @constructor

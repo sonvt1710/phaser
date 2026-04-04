@@ -10,10 +10,12 @@ var Events = require('./events');
 
 /**
  * @classdesc
- * A MultiFile is a special kind of parent that contains two, or more, Files as children and looks after
- * the loading and processing of them all. It is commonly extended and used as a base class for file types such as AtlasJSON or BitmapFont.
- *
- * You shouldn't create an instance of a MultiFile directly, but should extend it with your own class, setting a custom type and processing methods.
+ * A MultiFile is a composite file that groups two or more individual File objects as children and
+ * coordinates their loading and processing as a single unit. When all child files have loaded, the
+ * MultiFile's `addToCache` method is called to combine the results (e.g., associating a texture
+ * image with its JSON atlas data). It is commonly extended as a base class for file types such as
+ * AtlasJSON, BitmapFont, and AudioSprite. You should not create an instance directly, but extend
+ * it and override `addToCache`.
  *
  * @class MultiFile
  * @memberof Phaser.Loader

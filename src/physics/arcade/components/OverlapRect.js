@@ -11,6 +11,7 @@
  * @function Phaser.Physics.Arcade.Components.OverlapRect
  * @since 3.17.0
  *
+ * @param {Phaser.Physics.Arcade.World} world - The Arcade Physics World.
  * @param {number} x - The top-left x coordinate of the area to search within.
  * @param {number} y - The top-left y coordinate of the area to search within.
  * @param {number} width - The width of the area to search within.

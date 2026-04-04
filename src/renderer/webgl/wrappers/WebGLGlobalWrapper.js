@@ -9,7 +9,10 @@ var WebGLGlobalParametersFactory = require('../parameters/WebGLGlobalParametersF
 
 /**
  * @classdesc
- * Wrapper for the WebGL global state.
+ * Wrapper for the WebGL global state, including blend mode, texture bindings,
+ * scissor test, stencil test, depth test, and other GL context settings. It
+ * tracks the current state and applies changes efficiently to avoid redundant
+ * WebGL calls.
  *
  * @class WebGLGlobalWrapper
  * @memberof Phaser.Renderer.WebGL.Wrappers

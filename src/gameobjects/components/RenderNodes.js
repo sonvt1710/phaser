@@ -7,7 +7,7 @@
 var DeepCopy = require('../../utils/object/DeepCopy');
 
 /**
- * Provides methods for setting the WebGL render nodes of a Game Object.
+ * Provides methods for configuring WebGL render nodes on a Game Object. Render nodes are modular units responsible for different phases of the rendering pipeline (submitting draw calls, transforming vertices, handling textures). Each Game Object has a set of default render nodes, but you can override them with custom nodes for advanced rendering effects. This component is WebGL only.
  *
  * @namespace Phaser.GameObjects.Components.RenderNodes
  * @webglOnly

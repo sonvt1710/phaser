@@ -13,7 +13,8 @@
 var Mass = {
 
     /**
-     * Sets the mass of the physics body
+     * Sets the mass of the physics body. Mass affects collision response -- heavier
+     * bodies push lighter ones more during collisions.
      *
      * @method Phaser.Physics.Arcade.Components.Mass#setMass
      * @since 3.0.0

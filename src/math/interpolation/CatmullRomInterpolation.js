@@ -7,7 +7,9 @@
 var CatmullRom = require('../CatmullRom');
 
 /**
- * A Catmull-Rom interpolation method.
+ * Performs a Catmull-Rom spline interpolation over an array of values, producing a smooth
+ * curve that passes through every control point. The `k` parameter (0 to 1) determines
+ * the position along the full curve.
  *
  * @function Phaser.Math.Interpolation.CatmullRom
  * @since 3.0.0

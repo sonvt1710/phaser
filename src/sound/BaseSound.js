@@ -13,7 +13,10 @@ var NOOP = require('../utils/NOOP');
 
 /**
  * @classdesc
- * Class containing all the shared state and behavior of a sound object, independent of the implementation.
+ * Base class containing all the shared state and behavior of a sound object, independent
+ * of the audio implementation (Web Audio or HTML5 Audio). Manages playback state (play,
+ * pause, stop, seek), looping, volume, rate, detune, markers for playing sub-sections
+ * of audio, and event emission for playback lifecycle changes.
  *
  * @class BaseSound
  * @extends Phaser.Events.EventEmitter

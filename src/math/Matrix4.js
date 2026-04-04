@@ -14,7 +14,11 @@ var EPSILON = 0.000001;
 
 /**
  * @classdesc
- * A four-dimensional matrix.
+ * A 4x4 column-major matrix stored as a Float32Array of 16 values. Used for 3D
+ * transformations including projection, view, and model matrices. This is the primary
+ * matrix class for WebGL rendering operations in Phaser, supporting
+ * perspective/orthographic projection, look-at camera setup, and affine transforms
+ * (translate, rotate, scale).
  *
  * Adapted from [gl-matrix](https://github.com/toji/gl-matrix) by toji
  * and [vecmath](https://github.com/mattdesl/vecmath) by mattdesl

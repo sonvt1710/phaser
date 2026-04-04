@@ -525,7 +525,7 @@ var DOMElement = new Class({
      * @since 3.17.0
      *
      * @param {string} tagName - A string that specifies the type of element to be created. The nodeName of the created element is initialized with the value of tagName. Don't use qualified names (like "html:a") with this method.
-     * @param {(string|any)} [style] - Either a DOMString that holds the CSS styles to be applied to the created element, or an object the styles will be ready from.
+     * @param {(string|any)} [style] - Either a DOMString that holds the CSS styles to be applied to the created element, or an object the styles will be read from.
      * @param {string} [innerText] - A DOMString that holds the text that will be set as the innerText of the created element.
      *
      * @return {this} This DOM Element instance.
@@ -581,7 +581,7 @@ var DOMElement = new Class({
      * @since 3.17.0
      *
      * @param {(string|Element)} element - If a string it is passed to `getElementById()`, or it should be a reference to an existing Element.
-     * @param {(string|any)} [style] - Either a DOMString that holds the CSS styles to be applied to the created element, or an object the styles will be ready from.
+     * @param {(string|any)} [style] - Either a DOMString that holds the CSS styles to be applied to the created element, or an object the styles will be read from.
      * @param {string} [innerText] - A DOMString that holds the text that will be set as the innerText of the created element.
      *
      * @return {this} This DOM Element instance.

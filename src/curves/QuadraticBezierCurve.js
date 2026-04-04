@@ -61,7 +61,7 @@ var QuadraticBezier = new Class({
         this.p1 = p1;
 
         /**
-         * The second control point.
+         * The end point of the curve.
          *
          * @name Phaser.Curves.QuadraticBezier#p2
          * @type {Phaser.Math.Vector2}

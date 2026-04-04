@@ -13,8 +13,6 @@ var Class = require('../utils/Class');
  * @classdesc
  * A representation of a vector in 3D space.
  *
- * A three-component vector.
- *
  * @class Vector3
  * @memberof Phaser.Math
  * @constructor

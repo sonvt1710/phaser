@@ -43,6 +43,10 @@ var Wrap = require('../../math/Wrap');
  *
  * An instance of the World belongs to a Phaser.Scene and is accessed via the property `physics.world`.
  *
+ * It uses an RTree spatial index for fast broad-phase collision detection and supports
+ * tilemap collision. The World fires events for collisions, overlaps, world bounds
+ * contacts, and pause/resume state changes.
+ *
  * @class World
  * @extends Phaser.Events.EventEmitter
  * @memberof Phaser.Physics.Arcade

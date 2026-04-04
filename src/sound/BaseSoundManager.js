@@ -17,7 +17,11 @@ var Vector2 = require('../math/Vector2');
 
 /**
  * @classdesc
- * Base class for other Sound Manager classes.
+ * Base class for the Web Audio and HTML5 Audio Sound Manager implementations.
+ * It manages a collection of sound instances, handles global volume, mute, rate,
+ * and detune settings, provides spatial audio listener positioning (Web Audio only),
+ * and coordinates with the game lifecycle for pausing and resuming audio when the
+ * game loses or regains focus.
  *
  * @class BaseSoundManager
  * @extends Phaser.Events.EventEmitter

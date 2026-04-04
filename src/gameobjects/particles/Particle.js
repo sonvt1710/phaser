@@ -14,10 +14,14 @@ var Vector2 = require('../../math/Vector2');
 
 /**
  * @classdesc
- * A Particle is a simple object owned and controlled by a Particle Emitter.
- *
- * It encapsulates all of the properties required to move and update according
- * to the Emitters operations.
+ * A Particle is a lightweight object owned and controlled by a ParticleEmitter. Each Particle
+ * holds its own position, velocity, acceleration, rotation, scale, alpha, tint, and lifespan
+ * values, which are updated each frame by the Emitter's configured EmitterOp instances.
+ * Particles are pooled and recycled by the Emitter for performance. When a particle's lifespan
+ * expires, it is deactivated and returned to the pool for reuse rather than being destroyed.
+ * You do not normally create Particle instances directly; instead, the Emitter manages their
+ * lifecycle. You can extend this class to add custom properties by providing a custom
+ * `particleClass` in the emitter configuration.
  *
  * @class Particle
  * @memberof Phaser.GameObjects.Particles

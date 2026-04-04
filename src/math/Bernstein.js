@@ -12,8 +12,8 @@ var Factorial = require('./Factorial');
  * @function Phaser.Math.Bernstein
  * @since 3.0.0
  *
- * @param {number} n - The first value.
- * @param {number} i - The second value.
+ * @param {number} n - The degree of the Bernstein polynomial.
+ * @param {number} i - The index of the basis function.
  *
  * @return {number} The Bernstein basis of Factorial(n) / Factorial(i) / Factorial(n - i)
  */

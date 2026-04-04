@@ -5,7 +5,7 @@
  */
 
 /**
- * Rotate a `point` around `x` and `y` to the given `angle`, at the same distance.
+ * Rotate a `point` around `x` and `y` by the given `angle`, at the same distance.
  *
  * In polar notation, this maps a point from (r, t) to (r, angle), vs. the origin (x, y).
  *

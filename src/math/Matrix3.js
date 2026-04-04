@@ -11,7 +11,10 @@ var Class = require('../utils/Class');
 
 /**
  * @classdesc
- * A three-dimensional matrix.
+ * A 3x3 column-major matrix stored as a Float32Array of 9 values. Used for 2D affine
+ * transformations, extracting the upper-left 3x3 portion of a Matrix4, and computing
+ * normal matrices for lighting calculations. Values are stored in column-major order
+ * to match WebGL conventions.
  *
  * Defaults to the identity matrix when instantiated.
  *

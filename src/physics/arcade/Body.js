@@ -16,7 +16,11 @@ var Vector2 = require('../../math/Vector2');
 
 /**
  * @classdesc
- * A Dynamic Arcade Body.
+ * A Dynamic Arcade Body. This body type can move, accelerate, collide with other bodies,
+ * and bounce off surfaces. It supports rectangular and circular collision shapes, and
+ * provides velocity, acceleration, drag (with optional damping mode), friction, gravity,
+ * bounce, and world bounds collision. Dynamic bodies are the most common physics body type,
+ * used for players, enemies, projectiles, and other moving game entities.
  *
  * Its static counterpart is {@link Phaser.Physics.Arcade.StaticBody}.
  *

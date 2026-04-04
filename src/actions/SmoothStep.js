@@ -7,6 +7,10 @@
 var MathSmoothStep = require('../math/SmoothStep');
 
 /**
+ * Takes an array of Game Objects and distributes values across the specified property using
+ * smoothstep interpolation. Each item in the array is assigned a smoothstep-interpolated value
+ * based on its position, creating a smooth ease-in/ease-out transition across the items.
+ *
  * Smoothstep is a sigmoid-like interpolation and clamping function.
  *
  * The function depends on three parameters, the input x, the "left edge"

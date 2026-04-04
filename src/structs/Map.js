@@ -17,7 +17,10 @@ var Class = require('../utils/Class');
 
 /**
  * @classdesc
- * The keys of a Map can be arbitrary values.
+ * A custom Map implementation that stores entries as key-value pairs with ordered iteration.
+ * Unlike a native JavaScript Map, it also maintains an internal array of entries for efficient
+ * indexed access and iteration. Supports filtering, merging, and contains/size operations.
+ * Used internally by various Phaser systems for managing collections.
  *
  * ```javascript
  * var map = new Map([

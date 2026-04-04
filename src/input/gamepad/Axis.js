@@ -8,8 +8,10 @@ var Class = require('../../utils/Class');
 
 /**
  * @classdesc
- * Contains information about a specific Gamepad Axis.
- * Axis objects are created automatically by the Gamepad as they are needed.
+ * Represents a single axis on a Gamepad controller, such as one direction of an analog stick.
+ * Each axis has a `value` property ranging from -1 to 1 (with 0 as dead center), and a
+ * configurable `threshold` below which the value is treated as zero by `getValue()`. Axis
+ * objects are created automatically by the Gamepad as they are needed.
  *
  * @class Axis
  * @memberof Phaser.Input.Gamepad

@@ -12,9 +12,11 @@ var Vector2 = require('../../math/Vector2');
 
 /**
  * @classdesc
- * A single Gamepad.
- *
- * These are created, updated and managed by the Gamepad Plugin.
+ * Represents a single connected gamepad controller. Each Gamepad contains Button and Axis
+ * objects that are automatically created and updated by the Gamepad Plugin. You can access
+ * the directional sticks via the `leftStick` and `rightStick` Vector2 properties, individual
+ * buttons via the `buttons` array, and axes via the `axes` array. Gamepads are typically
+ * accessed through `this.input.gamepad.pad1` through `pad4` in a Scene.
  *
  * @class Gamepad
  * @extends Phaser.Events.EventEmitter

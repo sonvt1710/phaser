@@ -11,6 +11,11 @@ var Systems = require('./Systems');
  * @classdesc
  * A base Phaser.Scene class which can be extended for your own use.
  *
+ * A Scene is the fundamental organizational unit in Phaser. Each Scene has its own
+ * display list, update loop, cameras, input handling, and loader. Multiple Scenes
+ * can run simultaneously (e.g., a game scene with a UI overlay scene). Scenes are
+ * managed by the SceneManager and communicate with each other via the ScenePlugin.
+ *
  * You can also define the optional methods {@link Phaser.Types.Scenes.SceneInitCallback init()}, {@link Phaser.Types.Scenes.ScenePreloadCallback preload()}, and {@link Phaser.Types.Scenes.SceneCreateCallback create()}.
  *
  * @class Scene

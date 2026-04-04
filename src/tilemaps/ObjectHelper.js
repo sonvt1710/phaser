@@ -8,8 +8,10 @@ var Class = require('../utils/Class');
 
 /**
  * @classdesc
- * The ObjectHelper helps tie objects with `gids` into the tileset
- * that sits behind them.
+ * Resolves Tiled object GIDs to their corresponding Tileset data and applies
+ * per-tile properties from Tilesets to objects. It assists in creating Game
+ * Objects from Tiled object layers by providing texture frames, animations,
+ * and custom properties defined in the Tiled editor.
  *
  * @class ObjectHelper
  * @memberof Phaser.Tilemaps

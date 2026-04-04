@@ -113,7 +113,7 @@ var Key = new Class({
      *
      * @method Phaser.Filters.Key#setAlpha
      * @since 4.0.0
-     * @param {number} alpha
+     * @param {number} alpha - The alpha value to set on the key texture, between 0 (fully transparent) and 1 (fully opaque).
      * @return {this} This Filter Controller.
      */
     setAlpha: function (alpha)

@@ -8,9 +8,7 @@ var Angle = require('./Angle');
 var NormalAngle = require('./NormalAngle');
 
 /**
- * Calculate the reflected angle between two lines.
- *
- * This is the outgoing angle based on the angle of Line 1 and the normalAngle of Line 2.
+ * Calculates the reflected angle of Line A off the surface represented by Line B. This is the outgoing angle based on the angle of incidence (Line A) and the surface normal of Line B. The result is in radians.
  *
  * @function Phaser.Geom.Line.ReflectAngle
  * @since 3.0.0

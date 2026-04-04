@@ -10,7 +10,11 @@ var Extend = require('../utils/object/Extend');
 
 /**
  * @classdesc
- * A Frame is a section of a Texture.
+ * A Frame is a section of a Texture. It defines a rectangular sub-region within a
+ * Texture Source, storing its position, dimensions, UV coordinates, and optional trim
+ * data (for packed atlas frames with whitespace removed). Frames are the primary unit
+ * of texture addressing used by Game Objects -- when a Sprite displays a particular
+ * image, it references a Frame.
  *
  * @class Frame
  * @memberof Phaser.Textures

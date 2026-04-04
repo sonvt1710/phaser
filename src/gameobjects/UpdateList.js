@@ -11,11 +11,11 @@ var SceneEvents = require('../scene/events');
 
 /**
  * @classdesc
- * The Update List plugin.
- *
- * Update Lists belong to a Scene and maintain the list Game Objects to be updated every frame.
- *
- * Some or all of these Game Objects may also be part of the Scene's [Display List]{@link Phaser.GameObjects.DisplayList}, for Rendering.
+ * The Update List is a Scene plugin that maintains the list of Game Objects whose
+ * `preUpdate` method should be called every frame. Game Objects like Sprites add
+ * themselves to the Update List automatically so their animations are processed.
+ * You do not normally interact with the Update List directly; instead use
+ * `addToUpdateList` and `removeFromUpdateList` on individual Game Objects.
  *
  * @class UpdateList
  * @extends Phaser.Structs.ProcessQueue.<Phaser.GameObjects.GameObject>
