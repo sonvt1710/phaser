@@ -9,7 +9,7 @@ var Length = require('./Length');
 /**
  * Extends the start and end points of a Line by the given amounts.
  *
- * The amounts can be positive or negative. Positive points will increase the length of the line,
+ * The amounts can be positive or negative. Positive values will increase the length of the line,
  * while negative ones will decrease it.
  *
  * If no `right` value is provided it will extend the length of the line equally in both directions.

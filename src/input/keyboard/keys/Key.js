@@ -190,7 +190,7 @@ var Key = new Class({
         this.emitOnRepeat = false;
 
         /**
-         * If a key is held down this holds down the number of times the key has 'repeated'.
+         * If a key is held down this holds the number of times the key has 'repeated'.
          *
          * @name Phaser.Input.Keyboard.Key#repeats
          * @type {number}

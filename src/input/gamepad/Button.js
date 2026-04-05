@@ -70,8 +70,9 @@ var Button = new Class({
         this.value = 0;
 
         /**
-         * Can be set for analogue buttons to enable a 'pressure' threshold,
-         * before a button is considered as being 'pressed'.
+         * The minimum value the button must reach before it is considered as being pressed.
+         * The value is between 0 and 1. The default of 1 requires the button to be fully pressed.
+         * For analog buttons such as triggers, you can lower this threshold to detect partial presses.
          *
          * @name Phaser.Input.Gamepad.Button#threshold
          * @type {number}

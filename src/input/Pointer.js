@@ -123,6 +123,8 @@ var Pointer = new Class({
         this.button = 0;
 
         /**
+         * A bitmask representing which mouse buttons are currently held down. The possible values are:
+         *
          * 0: No button or un-initialized
          * 1: Left button
          * 2: Right button
@@ -212,7 +214,7 @@ var Pointer = new Class({
          * This property is updated whenever the Pointer moves, regardless of any button states. In other words,
          * it changes based on movement alone - a button doesn't have to be pressed first.
          *
-         * If you need the total distance travelled since the primary buttons was pressed down,
+         * If you need the total distance travelled since the primary button was pressed down,
          * then use the `Pointer.getDistance` method.
          *
          * @name Phaser.Input.Pointer#distance
@@ -285,7 +287,7 @@ var Pointer = new Class({
         this.worldY = 0;
 
         /**
-         * Time when this Pointer was most recently moved (regardless of the state of its buttons, if any)
+         * Time when this Pointer was most recently moved (regardless of the state of its buttons, if any).
          *
          * @name Phaser.Input.Pointer#moveTime
          * @type {number}
@@ -1150,7 +1152,7 @@ var Pointer = new Class({
      * Takes the previous and current Pointer positions and then generates an array of interpolated values between
      * the two. The array will be populated up to the size of the `steps` argument.
      *
-     * ```javaScript
+     * ```javascript
      * var points = pointer.getInterpolatedPosition(4);
      *
      * // points[0] = { x: 0, y: 0 }

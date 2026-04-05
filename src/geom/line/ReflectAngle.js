@@ -13,10 +13,10 @@ var NormalAngle = require('./NormalAngle');
  * @function Phaser.Geom.Line.ReflectAngle
  * @since 3.0.0
  *
- * @param {Phaser.Geom.Line} lineA - The first line.
- * @param {Phaser.Geom.Line} lineB - The second line.
+ * @param {Phaser.Geom.Line} lineA - The incident line whose angle of incidence is used.
+ * @param {Phaser.Geom.Line} lineB - The surface line, used to calculate the normal angle of reflection.
  *
- * @return {number} The reflected angle between each line.
+ * @return {number} The reflected angle of Line A off the surface of Line B, in radians.
  */
 var ReflectAngle = function (lineA, lineB)
 {

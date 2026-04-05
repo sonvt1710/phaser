@@ -282,7 +282,8 @@ var File = new Class({
     },
 
     /**
-     * Resets the XHRLoader instance this file is using.
+     * Clears the `onload`, `onerror`, and `onprogress` event handlers from the XHRLoader instance
+     * this file is using, preventing stale callbacks from firing after the load has completed or errored.
      *
      * @method Phaser.Loader.File#resetXHR
      * @since 3.0.0
@@ -387,12 +388,14 @@ var File = new Class({
     },
 
     /**
-     * Called if the file errors while loading, is sent a DOM ProgressEvent.
+     * Called if the file errors while loading. Resets the XHR state, then either decrements
+     * `retryAttempts` and retries the load, or signals failure to the Loader via `nextFile`
+     * if no retry attempts remain.
      *
      * @method Phaser.Loader.File#onError
      * @since 3.0.0
      *
-     * @param {XMLHttpRequest} xhr - The XMLHttpRequest that caused this onload event.
+     * @param {XMLHttpRequest} xhr - The XMLHttpRequest that caused this onerror event.
      * @param {ProgressEvent} event - The DOM ProgressEvent that resulted from this error.
      */
     onError: function ()
@@ -566,8 +569,8 @@ var File = new Class({
 });
 
 /**
- * Static method for creating object URL using URL API and setting it as image 'src' attribute.
- * If URL API is not supported (usually on old browsers) it falls back to creating Base64 encoded url using FileReader.
+ * Static method for creating an object URL using the URL API and setting it as the image 'src' attribute.
+ * If the URL API is not supported (usually on old browsers) it falls back to creating a Base64 encoded URL using FileReader.
  *
  * @method Phaser.Loader.File.createObjectURL
  * @static

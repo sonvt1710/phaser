@@ -63,7 +63,7 @@ var MultiFile = new Class({
         this.type = type;
 
         /**
-         * Unique cache key (unique within its file type)
+         * Unique cache key (unique within its file type).
          *
          * @name Phaser.Loader.MultiFile#key
          * @type {string}
@@ -117,7 +117,9 @@ var MultiFile = new Class({
         this.complete = false;
 
         /**
-         * The number of files to load.
+         * The number of child files still pending completion. Starts at the total number of child
+         * files and is decremented each time a child file finishes loading. When it reaches zero,
+         * all children have finished and the MultiFile may be processed.
          *
          * @name Phaser.Loader.MultiFile#pending
          * @type {number}
@@ -258,8 +260,8 @@ var MultiFile = new Class({
     },
 
     /**
-     * Called once all children of this multi file have been added to their caches and is now
-     * ready for deletion from the Loader.
+     * Called once all children of this MultiFile have been added to their caches and the
+     * MultiFile is now ready for deletion from the Loader.
      *
      * It will emit a `filecomplete` event from the LoaderPlugin.
      *

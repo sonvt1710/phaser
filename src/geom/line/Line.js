@@ -13,7 +13,15 @@ var Vector2 = require('../../math/Vector2');
 
 /**
  * @classdesc
- * Defines a Line segment, a part of a line between two endpoints.
+ * Defines a Line segment: a finite portion of a line described by a start point (`x1`, `y1`)
+ * and an end point (`x2`, `y2`). Unlike an infinite mathematical line, a Line segment has a
+ * fixed length and direction.
+ *
+ * Line segments are used throughout Phaser for collision detection, geometry calculations,
+ * path and boundary definitions, and placement utilities. You can retrieve a point at any
+ * percentage along the line via `getPoint`, get an array of evenly-spaced points via
+ * `getPoints`, or query the bounding extents through the `left`, `right`, `top`, and `bottom`
+ * accessors.
  *
  * @class Line
  * @memberof Phaser.Geom
@@ -127,7 +135,8 @@ var Line = new Class({
     },
 
     /**
-     * Get a random Point on the Line.
+     * Returns a randomly chosen point on this Line, selected with uniform distribution along its length.
+     * If a Vector2 is provided it will be populated with the result and returned; otherwise a new Vector2 is created.
      *
      * @method Phaser.Geom.Line#getRandomPoint
      * @since 3.0.0
@@ -237,7 +246,8 @@ var Line = new Class({
     },
 
     /**
-     * The left position of the Line.
+     * The left-most x coordinate of this Line, i.e. the lesser of `x1` and `x2`.
+     * When set, the endpoint that currently holds the smaller x value is moved to the new position.
      *
      * @name Phaser.Geom.Line#left
      * @type {number}
@@ -265,7 +275,8 @@ var Line = new Class({
     },
 
     /**
-     * The right position of the Line.
+     * The right-most x coordinate of this Line, i.e. the greater of `x1` and `x2`.
+     * When set, the endpoint that currently holds the larger x value is moved to the new position.
      *
      * @name Phaser.Geom.Line#right
      * @type {number}
@@ -293,7 +304,8 @@ var Line = new Class({
     },
 
     /**
-     * The top position of the Line.
+     * The top-most y coordinate of this Line, i.e. the lesser of `y1` and `y2`.
+     * When set, the endpoint that currently holds the smaller y value is moved to the new position.
      *
      * @name Phaser.Geom.Line#top
      * @type {number}
@@ -321,7 +333,8 @@ var Line = new Class({
     },
 
     /**
-     * The bottom position of the Line.
+     * The bottom-most y coordinate of this Line, i.e. the greater of `y1` and `y2`.
+     * When set, the endpoint that currently holds the larger y value is moved to the new position.
      *
      * @name Phaser.Geom.Line#bottom
      * @type {number}

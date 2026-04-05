@@ -92,7 +92,9 @@ var Axis = new Class({
     },
 
     /**
-     * Applies the `threshold` value to the axis and returns it.
+     * Returns the axis value after applying the dead zone threshold. If the absolute value
+     * of the axis is less than `threshold`, zero is returned instead, preventing minor stick
+     * drift from registering as intentional input. Otherwise the raw `value` is returned.
      *
      * @method Phaser.Input.Gamepad.Axis#getValue
      * @since 3.0.0
