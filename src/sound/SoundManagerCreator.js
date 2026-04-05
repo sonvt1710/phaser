@@ -14,12 +14,8 @@ var WebAudioSoundManager = require('./webaudio/WebAudioSoundManager');
  *
  * Be aware of https://developers.google.com/web/updates/2017/09/autoplay-policy-changes
  *
- * @function Phaser.Sound.SoundManagerCreator
+ * @namespace Phaser.Sound.SoundManagerCreator
  * @since 3.0.0
- *
- * @param {Phaser.Game} game - Reference to the current game instance.
- *
- * @return {(Phaser.Sound.HTML5AudioSoundManager|Phaser.Sound.WebAudioSoundManager|Phaser.Sound.NoAudioSoundManager)} The Sound Manager instance that was created.
  */
 var SoundManagerCreator = {
 
