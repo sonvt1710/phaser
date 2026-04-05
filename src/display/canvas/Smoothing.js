@@ -8,6 +8,14 @@
 var prefix = '';
 
 /**
+ * The Smoothing namespace contains functions for controlling the image smoothing (anti-aliasing)
+ * setting on a canvas rendering context. Image smoothing affects how the browser scales images:
+ * when enabled, scaled images are blurred to reduce jagged edges; when disabled, pixels are
+ * rendered sharply without interpolation. Disabling smoothing is commonly used in games that
+ * rely on pixel art, where blurring would distort the intended aesthetic. The functions in this
+ * namespace automatically detect and apply the correct vendor-prefixed property for the current
+ * browser, supporting `imageSmoothingEnabled` as well as the `webkit`, `ms`, `moz`, and `o` prefixed variants.
+ *
  * @namespace Phaser.Display.Canvas.Smoothing
  * @since 3.0.0
  */

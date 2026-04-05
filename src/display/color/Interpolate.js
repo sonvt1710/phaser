@@ -15,7 +15,7 @@ var HSVToRGB = require('./HSVToRGB');
  */
 
 /**
- * Interpolates between the two given color ranges over the length supplied.
+ * Interpolates between the two given RGB color values over the length supplied.
  *
  * @function Phaser.Display.Color.Interpolate.RGBWithRGB
  * @memberof Phaser.Display.Color.Interpolate
@@ -137,7 +137,7 @@ var ColorWithColor = function (color1, color2, length, index, hsv, hsvSign)
  * @static
  * @since 3.0.0
  *
- * @param {Phaser.Display.Color} color1 - The first Color object.
+ * @param {Phaser.Display.Color} color - The Color object.
  * @param {number} r - Red value.
  * @param {number} g - Green value.
  * @param {number} b - Blue value.
