@@ -110,7 +110,7 @@ var Displacement = new Class({
     /**
      * Returns the amount of extra padding, in pixels, that this filter requires when rendering.
      * The padding accounts for the displacement effect extending beyond the original bounds
-     * of the filtered Game Object.
+     * of the Camera's rendered output.
      *
      * @method Phaser.Filters.Displacement#getPadding
      * @since 4.0.0

@@ -107,9 +107,9 @@ var Key = new Class({
 
     /**
      * Sets the alpha value to use for the key.
-     * Alpha controls how much opacity is removed from the image, in the range 0-1.
+     * Alpha controls the opacity of pixels matched by the key color, in the range 0 to 1.
      * This is stored in the fourth element of the color array.
-     * The color is preserved.
+     * The RGB color values are preserved.
      *
      * @method Phaser.Filters.Key#setAlpha
      * @since 4.0.0

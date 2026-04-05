@@ -94,7 +94,9 @@ var Shadow = new Class({
         this.power = power;
 
         /**
-         * The internal gl color array.
+         * The internal WebGL color array used by the shader. Stores the shadow color
+         * as normalized RGBA float values in the range 0 to 1. This array is updated
+         * automatically when the `color` property is set.
          *
          * @name Phaser.Filters.Shadow#glcolor
          * @type {number[]}
@@ -130,7 +132,9 @@ var Shadow = new Class({
     },
 
     /**
-     * The color of the shadow.
+     * The color of the shadow, expressed as a hex RGB value (e.g. `0xff0000` for red,
+     * `0x000000` for black). Setting this property updates the internal `glcolor` array
+     * used by the WebGL shader.
      *
      * @name Phaser.Filters.Shadow#color
      * @type {number}
