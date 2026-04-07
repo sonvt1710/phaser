@@ -453,7 +453,7 @@ PathFollower is only on `Phaser.GameObjects.PathFollower` (extends Sprite).
 
 9. **setSize vs setDisplaySize**: `setSize()` changes internal dimensions (used for frames, physics). `setDisplaySize()` changes the rendered size by adjusting scale.
 
-10. **Origin default is 0.5**: All Game Objects default to center origin. Use `setOrigin(0, 0)` for top-left positioning.
+10. **Origin default is 0.5**: All Game Objects default to center origin. Use `setOrigin(0, 0)` for top-left positioning. Text and BitmapText instead default to top-left positioning.
 
 11. **Transform.z is NOT depth**: The `z` property on Transform is for custom use. Rendering order is controlled by `depth` (Depth component) or display list position.
 

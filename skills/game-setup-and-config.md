@@ -58,7 +58,7 @@ Set via `config.type`. Default is `Phaser.AUTO`.
 
 ### Pixel Art Game
 
-When `pixelArt` is `true`, Config automatically sets `antialias: false`, `antialiasGL: false`, and `roundPixels: true`. Note: in v4, if `zoom !== 1`, `pixelArt` defaults to `true`.
+When `pixelArt` is `true`, Config automatically sets `antialias: false`, `antialiasGL: false`, and `roundPixels: true`.
 
 ```js
 const config = {
@@ -309,7 +309,7 @@ These can be set at the top level OR nested under `render`. The `render` sub-obj
 |---|---|---|---|
 | `antialias` | `boolean` | `true` | Linear interpolation for scaled/rotated textures |
 | `antialiasGL` | `boolean` | `true` | Antialias on WebGL context creation |
-| `pixelArt` | `boolean` | `zoom !== 1` | Sets `antialias: false`, `roundPixels: true` automatically |
+| `pixelArt` | `boolean` | `false` | Sets `antialias: false`, `roundPixels: true` automatically |
 | `smoothPixelArt` | `boolean` | `false` | WebGL only. Blocky pixels with smooth edges |
 | `roundPixels` | `boolean` | `false` | Snap texture-based objects to integer positions |
 | `transparent` | `boolean` | `false` | Transparent canvas background |
@@ -356,32 +356,29 @@ These can be set at the top level OR nested under `render`. The `render` sub-obj
 
 ## Gotchas and Common Mistakes
 
-1. **pixelArt defaults to true when zoom !== 1.** In v4, if you set `zoom: 2` but want smooth textures, you must explicitly set `pixelArt: false`. This is new behavior -- the default is `this.zoom !== 1` in Config.js.
+1. **scale vs top-level config.** `width`, `height`, `zoom`, and `parent` can be set at the top level or inside `scale`. The `scale` sub-object values take priority. Avoid setting both to prevent confusion.
 
-2. **scale vs top-level config.** `width`, `height`, `zoom`, and `parent` can be set at the top level or inside `scale`. The `scale` sub-object values take priority. Avoid setting both to prevent confusion.
+2. **Phaser.WEBGL has no fallback.** Unlike `AUTO`, using `Phaser.WEBGL` directly will not fall back to Canvas if WebGL is unavailable. The game will fail silently.
 
-3. **Phaser.WEBGL has no fallback.** Unlike `AUTO`, using `Phaser.WEBGL` directly will not fall back to Canvas if WebGL is unavailable. The game will fail silently.
+3. **parent: null vs parent: undefined.** `undefined` (or omitted) appends the canvas to `document.body`. `null` means Phaser will not add the canvas to the DOM at all -- you must do it yourself.
 
-4. **parent: null vs parent: undefined.** `undefined` (or omitted) appends the canvas to `document.body`. `null` means Phaser will not add the canvas to the DOM at all -- you must do it yourself.
+4. **transparent overrides backgroundColor.** When `transparent: true`, the background color is forced to `rgba(0,0,0,0)` regardless of what you set.
 
-5. **transparent overrides backgroundColor.** When `transparent: true`, the background color is forced to `rgba(0,0,0,0)` regardless of what you set.
+5. **fps.target does not enforce frame rate.** It is advisory only. Use `fps.limit` to actually cap the frame rate. The browser's display refresh rate is always the upper bound.
 
-6. **fps.target does not enforce frame rate.** It is advisory only. Use `fps.limit` to actually cap the frame rate. The browser's display refresh rate is always the upper bound.
+6. **fps.limit only slows down, never speeds up.** Setting `limit: 120` on a 60Hz display still results in 60 FPS.
 
-7. **fps.limit only slows down, never speeds up.** Setting `limit: 120` on a 60Hz display still results in 60 FPS.
+7. **DOM Container requires a parent.** Setting `dom.createContainer: true` without providing a `parent` element will not work.
 
-8. **DOM Container requires a parent.** Setting `dom.createContainer: true` without providing a `parent` element will not work.
+8. **smoothPixelArt is WebGL-only.** It has no effect with the Canvas renderer.
 
-9. **smoothPixelArt is WebGL-only.** It has no effect with the Canvas renderer.
+9. **window.FORCE_WEBGL and window.FORCE_CANVAS.** Config.js checks for these globals at the end of parsing and will override the `type` setting. This is intended for development/testing.
 
-10. **window.FORCE_WEBGL and window.FORCE_CANVAS.** Config.js checks for these globals at the end of parsing and will override the `type` setting. This is intended for development/testing.
-
-11. **Game.destroy() is asynchronous.** It flags the game for destruction on the next frame. Listen for the `DESTROY` event to react to completion. Pass `noReturn: true` only if you will never create another Phaser instance on the same page.
+10. **Game.destroy() is asynchronous.** It flags the game for destruction on the next frame. Listen for the `DESTROY` event to react to completion. Pass `noReturn: true` only if you will never create another Phaser instance on the same page.
 
 ## v4 Changes from v3
 
 - **Default dimensions changed:** Width defaults to `1024` (was `800`), height to `768` (was `600`).
-- **pixelArt default is zoom-dependent:** `pixelArt` now defaults to `true` when `zoom !== 1`, rather than always `false`.
 - **EXPAND scale mode added:** `Phaser.Scale.EXPAND` (value `6`) is new -- combines RESIZE visible area behavior with FIT canvas scaling.
 - **Loader maxRetries default:** `loader.maxRetries` defaults to `2` (was `0` in early v3).
 - **smoothPixelArt option:** New WebGL-only rendering mode that smooths edges between blocky pixels.
