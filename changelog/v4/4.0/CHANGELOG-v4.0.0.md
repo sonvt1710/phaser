@@ -688,6 +688,7 @@ All enhancements from late Phaser v3 development have been merged into v4. This 
 - Fix texture offsets in `ParseXMLBitmapFont`. Thanks to @leemanhopeter.
 - Fix `TextureManager.addUint8Array` method, which got premultiplied alpha wrong and flipY wrong.
 - Fix `Textures.Parsers.AtlasXML` passing trimmed and untrimmed dimensions in the wrong order to setTrim(), causing frame.realWidth to return the trimmed size instead of the original size. This made setOrigin() compute incorrect pivots for any non-default origin. Fix #7245 (thanks @cmnemoi)
+- Fix `Texture#getFrameBounds` no longer includes the last frame (`__BASE`), as it caused an incorrect calculation of the bounds (always `{x:0, y:0, w: textureWidth, h: textureHight}`) (thanks @jjcapellan)
 
 ### SpriteGPULayer Fixes
 
