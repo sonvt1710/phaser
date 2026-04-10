@@ -80,6 +80,18 @@ It is also available from Cloudflare's [cdnjs](https://cdnjs.com/libraries/phase
 <script src="https://cdnjs.cloudflare.com/ajax/libs/phaser/4.0.0/phaser.min.js"></script>
 ```
 
+## How Big is Phaser?
+
+Don't be alarmed if you look at `phaser.js` and see a file approaching 10 MB. Over 84% of that is inline documentation -- JSDoc comments, type annotations, and detailed method descriptions that power the TypeScript definitions and API docs. It's there for your IDE, not for your players.
+
+The minified build, `phaser.min.js`, strips all of that out and comes in at **1.29 MB**. When served over the web with standard gzip compression, the full build (every feature included) is just **345 KB** -- smaller than most title screen images. If your game only uses Arcade Physics, the compressed size drops to **313 KB**. You can reduce it further still by tweaking the build settings to exclude features your game doesn't need.
+
+| Build | Raw Size | Compressed (gzip) |
+| ----- | -------- | ------------------ |
+| `phaser.js` (with docs) | 8.23 MB | -- |
+| `phaser.min.js` (full) | 1.29 MB | 345 KB |
+| `phaser-arcade.min.js` | -- | 313 KB |
+
 ## Your First Game
 
 ```js
@@ -170,6 +182,10 @@ This makes Phaser an excellent choice for AI-assisted development workflows. Too
 
 Whether you're a solo dev using AI to move faster, a team using it for prototyping, or someone learning game development with an AI pair programmer, Phaser's well-documented, consistent API means the AI is working with you, not fighting the framework.
 
+### AI Agent Skills
+
+This repository includes a comprehensive set of [AI agent skills](skills/) covering every major Phaser subsystem -- scenes, physics, input, animations, tilemaps, tweens, particles, cameras, and much more. Point your AI coding agent at the `skills/` folder and it will understand Phaser 4's architecture, APIs, patterns, and gotchas in depth. Tell it to create a game and it will know the right way to structure scenes, load assets, set up physics, and handle input -- all using idiomatic Phaser 4 code.
+
 ---
 
 ## Phaser TypeScript Definitions
@@ -232,6 +248,8 @@ You'll find [Phaser Plugins](https://rexrainbow.github.io/phaser3-rex-notes/docs
 
 Phaser 4 keeps most of the public API you know, but there are important breaking changes -- the renderer, tint system, FX/Masks, Shader API, lighting, and several removed classes (Point, Mesh, BitmapMask) all need attention. We've written a detailed [Migration Guide](changelog/v4/4.0/MIGRATION-GUIDE.md) with a checklist to walk you through it.
 
+We've also included a dedicated [v3 to v4 migration skill](skills/v3-to-v4-migration/SKILL.md) in this repository. Point your AI coding agent at it and tell it to migrate your Phaser 3 game -- it understands every breaking change and knows the exact v4 replacements.
+
 ## Change Log
 
 We meticulously keep track of new features, updates and bug fixes in our change logs. Each version of Phaser has its own change log:
@@ -254,7 +272,8 @@ Cheers,
 
 **Visit** the [Phaser website](https://phaser.io)<br />
 **Play** some [amazing games](https://phaser.io/games)<br />
-**Learn** By browsing our [API Docs](https://docs.phaser.io), [Support Forum](https://phaser.discourse.group/) and [StackOverflow](https://stackoverflow.com/questions/tagged/phaser-framework)<br />
+**Learn** By browsing our [API Docs](https://docs.phaser.io) or [Support Forum](https://phaser.discourse.group/)<br />
+**AI Skills** Point your AI agent at our [Phaser Skills](skills/) for deep framework knowledge<br />
 **Code Examples?** We've over 2000 [Examples](https://phaser.io/examples) to learn from<br />
 **Read** the weekly [Phaser World](https://phaser.world) Newsletter<br />
 **Be Social:** Join us on [Discord](https://discord.com/invite/phaser) and [Reddit](https://www.reddit.com/r/phaser/) or follow us on [Twitter](https://twitter.com/phaser_)<br />
