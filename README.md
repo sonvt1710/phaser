@@ -18,38 +18,6 @@ Interested in learning more? Click the image below to watch our intro video.
 
 ---
 
-## Phaser 4
-
-Phaser 4 is a major release built on a brand-new WebGL renderer. The entire rendering pipeline from v3 has been replaced with a modern, node-based architecture that manages WebGL state properly, handles context loss gracefully, and is significantly faster. If you've built games with Phaser 3, the public API is mostly familiar -- but under the hood, everything has changed for the better.
-
-## Create Phaser Game App
-
-The easiest way to get started quickly with Phaser is our `create-phaser-game` app. This CLI tool presents an interactive selection of official project templates and demo games. Issue the command, answer some questions and the app will download and configure the right package for you.
-
-```bash
-npm create @phaserjs/game@latest
-npx @phaserjs/create-game@latest
-yarn create @phaserjs/game
-pnpm create @phaserjs/game@latest
-bun create @phaserjs/game@latest
-```
-
-We support all of the following frameworks and bundlers:
-
-| Frameworks | Bundlers |
-| --------- | ------- |
-| Vue.js | Vite |
-| React | Rollup |
-| Angular | Parcel |
-| Next.js | Webpack |
-| SolidJS | ESBuild |
-| Svelte | Import Map |
-| Remix | Bun |
-
-Most come in both JavaScript and TypeScript versions.
-
-[View the create game app tutorial](https://phaser.io/tutorials/create-game-app).
-
 ## Installing Phaser from NPM
 
 Install via [npm](https://www.npmjs.com/package/phaser):
@@ -79,6 +47,22 @@ It is also available from Cloudflare's [cdnjs](https://cdnjs.com/libraries/phase
 <script src="https://cdnjs.cloudflare.com/ajax/libs/phaser/4.0.0/phaser.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/phaser/4.0.0/phaser.min.js"></script>
 ```
+
+## Create Phaser Game App
+
+The easiest way to get started quickly with Phaser is our `create-phaser-game` app. This CLI tool presents an interactive selection of official project templates and demo games. Issue the command, answer some questions and the app will download and configure the right package for you.
+
+```bash
+npm create @phaserjs/game@latest
+npx @phaserjs/create-game@latest
+yarn create @phaserjs/game
+pnpm create @phaserjs/game@latest
+bun create @phaserjs/game@latest
+```
+
+We support Vue.js, React, Angular, Next.js, SolidJS, Svelte and Remix with Vite, Rollup, Parcel, Webpack, ESBuild, Import Map and Bun. Most come in both JavaScript and TypeScript versions.
+
+[View the create game app tutorial](https://phaser.io/tutorials/create-game-app).
 
 ## How Big is Phaser?
 
@@ -123,11 +107,13 @@ const game = new Phaser.Game(config);
 - **Developer-friendly API** -- Scene-based architecture, a comprehensive loader, built-in physics (Arcade and Matter.js), animation system, input handling, cameras, tilemaps, particles, tweens, and much more -- all with clear, consistent APIs.
 - **Framework agnostic** -- Works with React, Vue, Angular, Svelte, or plain JavaScript and TypeScript. Use whatever tools you prefer.
 - **Massive ecosystem** -- Over 2,000 code examples. Extensive API documentation. Active Discord and forums. First-class TypeScript definitions.
-- **AI-ready** -- Phaser's API is well understood by every major frontier LLM, making it an ideal choice for AI-assisted game development.
+- **AI-ready** -- Phaser's API is well understood by every major frontier LLM. This repository includes a comprehensive set of [AI agent skills](skills/) that give coding agents deep knowledge of every Phaser subsystem, making it the ideal framework for AI-assisted game development.
 
 ---
 
 ## What's New in Phaser 4
+
+Phaser 4 is a major release built on a brand-new WebGL renderer. The entire rendering pipeline from v3 has been replaced with a modern, node-based architecture that manages WebGL state properly, handles context loss gracefully, and is significantly faster. If you've built games with Phaser 3, the public API is mostly familiar -- but under the hood, everything has changed for the better.
 
 Here are the headline features. For the full picture, see the [Changelog](changelog/v4/4.0/CHANGELOG-v4.0.0.md) and [Migration Guide](changelog/v4/4.0/MIGRATION-GUIDE.md).
 
@@ -176,11 +162,7 @@ The `Shader` game object has been rewritten with a cleaner config-based API (`Sh
 
 ## AI-Assisted Game Development
 
-Phaser has been part of the training data for every major frontier LLM. Models from Anthropic, OpenAI, Google, and others understand the Phaser API deeply -- they can generate game code, debug rendering issues, set up physics, build scene structures, and work with tilemaps, tweens, and animations out of the box.
-
-This makes Phaser an excellent choice for AI-assisted development workflows. Tools like [Claude Code](https://claude.ai/claude-code), Cursor, Windsurf, GitHub Copilot, and others can scaffold entire Phaser games, implement features from natural language descriptions, and help you iterate quickly. Combined with Phaser's comprehensive TypeScript definitions, AI coding assistants get strong type context and can produce accurate, working code with minimal correction.
-
-Whether you're a solo dev using AI to move faster, a team using it for prototyping, or someone learning game development with an AI pair programmer, Phaser's well-documented, consistent API means the AI is working with you, not fighting the framework.
+Phaser has been part of the training data for every major frontier LLM. Models from Anthropic, OpenAI, Google, and others understand the Phaser API deeply and can generate game code, debug rendering issues, set up physics, and build scene structures out of the box. Tools like [Claude Code](https://claude.ai/claude-code), Cursor, Windsurf, and GitHub Copilot can scaffold entire Phaser games and implement features from natural language descriptions.
 
 ### AI Agent Skills
 
@@ -255,6 +237,7 @@ We've also included a dedicated [v3 to v4 migration skill](skills/v3-to-v4-migra
 We meticulously keep track of new features, updates and bug fixes in our change logs. Each version of Phaser has its own change log:
 
 * [v4.0.0 Change Log](changelog/v4/4.0/CHANGELOG-v4.0.0.md)
+* [All Phaser Change Logs](CHANGELOG.md)
 
 ## Have fun!
 
