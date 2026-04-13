@@ -5,3 +5,4 @@
 ### Fixes
 
 - Fix reversions in rounded rectangle handling. Thanks @laineus!
+- Remove duplicate function definition and exposed internal code docs from `RectangleCanvasRenderer`.
