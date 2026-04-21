@@ -47,6 +47,18 @@ var RenderTextureRenderModes = require('./RenderTextureRenderModes');
  * to be drawn with no aliasing around the edges. This is a technical limitation of WebGL1. To get around it,
  * create your shape as a texture in an art package, then draw that to this texture.
  *
+ * If you activate mipmap support in your game, it will not automatically
+ * be applied to DynamicTextures.
+ * This is because regenerating the mipmap for a texture
+ * costs over 10 microseconds, a big performance loss for a single frame.
+ * If you want to render your DynamicTextures with mipmaps,
+ * you must also activate the render config option `mipmapRegeneration`.
+ *
+ * In the event that the WebGL context is lost, this DynamicTexture will
+ * lose its contents. Once context is restored (signalled by the `restorewebgl`
+ * event), you can choose to redraw the contents of the DynamicTexture.
+ * You are responsible for the redrawing logic.
+ *
  * @class RenderTexture
  * @extends Phaser.GameObjects.Image
  * @memberof Phaser.GameObjects

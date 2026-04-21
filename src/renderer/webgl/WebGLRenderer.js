@@ -121,7 +121,8 @@ var WebGLRenderer = new Class({
             maxTextureSize: gameConfig.maxTextureSize,
             batchSize: gameConfig.batchSize,
             maxLights: gameConfig.maxLights,
-            mipmapFilter: gameConfig.mipmapFilter
+            mipmapFilter: gameConfig.mipmapFilter,
+            mipmapRegeneration: gameConfig.mipmapRegeneration
         };
 
         /**
