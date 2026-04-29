@@ -58,7 +58,7 @@ var StableSort = require('../../utils/array/StableSort');
  * Layers should always be the topmost elements of any scene hierarchy.
  * They can be children of layers, but not of anything else.
  *
- * Until Phaser version 4.NEXT, Layer was not a true GameObject.
+ * Until Phaser version 4.1.0, Layer was not a true GameObject.
  * It is now a true GameObject.
  *
  * @class Layer

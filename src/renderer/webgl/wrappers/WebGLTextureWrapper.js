@@ -228,7 +228,7 @@ var WebGLTextureWrapper = new Class({
          *
          * @name Phaser.Renderer.WebGL.Wrappers.WebGLTextureWrapper#needsMipmapRegeneration
          * @type {boolean}
-         * @since 4.NEXT
+         * @since 4.1.0
          * @default false
          */
         this.needsMipmapRegeneration = false;
@@ -451,7 +451,7 @@ var WebGLTextureWrapper = new Class({
      * Return whether the texture is set to use a mipmap minification filter.
      *
      * @name Phaser.Renderer.WebGL.Wrappers.WebGLTextureWrapper#isMipmap
-     * @since 4.NEXT
+     * @since 4.1.0
      * @returns {boolean} Whether the texture is set to use a mipmap minification filter.
      */
     isMipmap: function ()
@@ -473,7 +473,7 @@ var WebGLTextureWrapper = new Class({
      * Otherwise this function returns without side effects.
      *
      * @name Phaser.Renderer.WebGL.Wrappers.WebGLTextureWrapper#generateMipmap
-     * @since 4.NEXT
+     * @since 4.1.0
      */
     generateMipmap: function ()
     {

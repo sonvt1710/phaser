@@ -159,7 +159,7 @@ var DrawingContext = new Class({
          *
          * @name Phaser.Renderer.WebGL.DrawingContext#enableMipmap
          * @type {boolean}
-         * @since 4.NEXT
+         * @since 4.1.0
          * @default false
          */
         this.enableMipmap = !!options.enableMipmap;

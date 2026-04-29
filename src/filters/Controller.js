@@ -146,7 +146,7 @@ var Controller = new Class({
      * and `currentPadding`.
      *
      * @method Phaser.Filters.Controller#getPaddingCeil
-     * @since 4.NEXT
+     * @since 4.1.0
      * @returns {Phaser.Geom.Rectangle} The rounded padding required by this filter.
      */
     getPaddingCeil: function ()

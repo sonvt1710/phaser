@@ -1,6 +1,6 @@
 # Phaser 4 Changelog
 
-## Version 4.NEXT
+## Version 4.1.0
 
 ### New Features
 
