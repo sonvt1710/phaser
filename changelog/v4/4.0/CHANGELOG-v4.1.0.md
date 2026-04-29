@@ -16,3 +16,4 @@
 - Fix framebuffers (in filters and DynamicTextures) using mipmaps incorrectly. Now filters do not render with mipmaps. Thanks @Flow!
 - Fix lack of default export in ESM build. Thanks @kibertoad!
 - Fix lack of Class and LOG_VERSION export in ESM build. Thanks to many users including @Flow and @rex for helping investigate this!
+- Fix `Utils.Array.GetRandom` often returning `null` if only `startIndex` was specified. Now it always returns an array element if part of the array is within range, as documented.
